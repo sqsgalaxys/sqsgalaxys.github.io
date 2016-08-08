@@ -1,0 +1,315 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Use-Vim | sqsgalaxys&#39;Blog</title>
+  <meta name="author" content="sqsgalaxys">
+  
+  <meta name="description" content="Note">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Use-Vim"/>
+  <meta property="og:site_name" content="sqsgalaxys&#39;Blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/css/themes/bootstrap.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'sqsgalaxys.github.io/', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="navbar-brand" href="/">sqsgalaxys&#39;Blog</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header page-header-inverse ">		
+			<h1 class="title title-inverse "> Use-Vim</h1>
+		</div>		
+	
+
+
+
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <h1 id="vim-使用"><a href="#vim-使用" class="headerlink" title="vim 使用"></a>vim 使用</h1><hr>
+<h2 id="删除文件中所有的空行"><a href="#删除文件中所有的空行" class="headerlink" title="删除文件中所有的空行 :"></a>删除文件中所有的空行 :</h2><p><code>:g/^$/d</code></p>
+<p><a href="http://bbs.chinaunix.net/thread-510754-1-1.html" target="_blank" rel="external">如何在vim中删除空行-Shell-ChinaUnix.net</a></p>
+<hr>
+<h2 id="整行移动"><a href="#整行移动" class="headerlink" title="整行移动 :"></a>整行移动 :</h2><ul>
+<li>移动到下一行开头<br><code>+</code></li>
+<li>移动到上一行开头<br><code>-</code></li>
+<li>移动到行首<br><code>0</code></li>
+<li>移动到行尾<br><code>$</code></li>
+</ul>
+<hr>
+<h2 id="符号"><a href="#符号" class="headerlink" title="符号 . :"></a>符号 <code>.</code> :</h2><ul>
+<li>重复命令</li>
+<li>当前行<br><code>.-1</code> 代表当前行的上一行</li>
+</ul>
+<hr>
+<h2 id="MiniBufExplorer"><a href="#MiniBufExplorer" class="headerlink" title="MiniBufExplorer"></a>MiniBufExplorer</h2><p>MiniBufExplorer 是什麽？<br>MiniBufExplorer 安装<br>MiniBufExplorer 使用</p>
+<h3 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h3><ul>
+<li><a href="https://github.com/fholgado/minibufexpl.vim" target="_blank" rel="external">fholgado/minibufexpl.vim: Elegant buffer explorer - takes very little screen space</a></li>
+<li><a href="https://bbs.sjtu.edu.cn/bbsanc,path,%2Fgroups%2FGROUP_3%2FGNULinux%2FSoftware%2FD95E89182%2FD5277E56B%2FA96F89F1C.html" target="_blank" rel="external">快速浏览和操作Buffer – 插件: MiniBufExplorer</a></li>
+</ul>
+<hr>
+<h2 id="buffer-的使用"><a href="#buffer-的使用" class="headerlink" title="buffer 的使用:"></a><strong><em>buffer 的使用:</em></strong></h2><ul>
+<li>下一个 buffer<br><code>:bn</code></li>
+<li>上一个 buffer<br><code>:bp</code></li>
+<li>打开名称为 filename 的文件<br><code>:e&lt;filename&gt;</code></li>
+<li>显示当前打开的 buffer<br><code>:ls</code></li>
+<li>n 为数字，打开第 n 个buffer<br><code>:b&lt;n&gt;</code></li>
+<li>自动补全<br><code>:b&lt;tab&gt;</code></li>
+<li>删除 buffer<br><code>:bd</code></li>
+</ul>
+<hr>
+<h2 id="进制操作"><a href="#进制操作" class="headerlink" title="进制操作:"></a>进制操作:</h2><ul>
+<li>正常打开文件，默认添加一个换行行<br><code>vim filename</code></li>
+<li>以二进制打开文件<br><code>vim -b filename</code></li>
+<li>进入 16 进制查看编辑模式,如果在这个模式下执行 <code>:wq</code> 命令会把文件直接保存成这个界面(会把当前界面都保存成字符)<br><code>:%xxd</code></li>
+<li>修改 16 进制内容后 回到普通模式，可以看到修改产生的变化，这时执行 <code>:wq</code> 不会保存到 16 进制的模式<br><code>:%xxd -r</code></li>
+</ul>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">eg:(Linux 下操作)</div><div class="line">echo -<span class="keyword">n</span> <span class="string">"test"</span> &gt; <span class="keyword">test</span>.bin</div><div class="line"><span class="keyword">cat</span> <span class="keyword">test</span>.bin</div><div class="line">vim -b <span class="keyword">test</span>.bin</div><div class="line">:%!xxd</div><div class="line">vim <span class="keyword">test</span>.bin</div><div class="line">:%!xxd</div><div class="line">0x0a</div><div class="line">vim -b <span class="keyword">test</span>.bin</div><div class="line">:%!xxd</div><div class="line"><span class="comment">// 修改 </span></div><div class="line">:%!xxd -<span class="built_in">r</span></div><div class="line">:wq</div></pre></td></tr></table></figure>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考:"></a>参考:</h3><p><a href="http://www.cnblogs.com/killkill/archive/2010/06/23/1763785.html" target="_blank" rel="external">在Linux下使用vim配合xxd查看并编辑二进制文件 - killkill - 博客园</a><br><a href="http://www.cnblogs.com/Jason-Damon/archive/2013/05/04/3059343.html" target="_blank" rel="external">linux下用vim实现ultraEdit的功能 - Jason Damon - 博客园</a></p>
+<hr>
+<h2 id="q1-q"><a href="#q1-q" class="headerlink" title=":q1 = :q!"></a><code>:q1</code> = <code>:q!</code></h2><hr>
+<h2 id="Vim-帮助文件的跳转"><a href="#Vim-帮助文件的跳转" class="headerlink" title="Vim 帮助文件的跳转"></a>Vim 帮助文件的跳转</h2><ul>
+<li>Jump to a subject:<br>Position the cursor on a tag (e.g. |bars|) and hit <code>CTRL-]</code>.</li>
+<li>With the mouse:<br>“:set mouse=a” to enable the mouse (in xterm or GUI).  <code>Double-click</code> the left mouse button on a tag, e.g. |bars|.</li>
+<li>Jump back:<br>Type <code>CTRL-T</code> or <code>CTRL-O</code> (repeat to go further back).</li>
+</ul>
+<hr>
+<h2 id="Vim-使用-find命令打开文件"><a href="#Vim-使用-find命令打开文件" class="headerlink" title="Vim 使用:find命令打开文件"></a>Vim 使用<code>:find</code>命令打开文件</h2><p>使用：<br>搜索打开文件 filename：<br><figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:<span class="built_in">find</span> filename</div></pre></td></tr></table></figure></p>
+<p>提示：<br>使用前需要配置<code>path</code>变量,添加以下语句到 <code>.vimrc</code>文件以可以搜索打开以下文件夹中的文件:<br><code>D:\OneDrive\VIM</code><br><code>D:\Proram Files (x86)\hexo\source\_posts</code><br><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">:set path+=.,D:\OneDrive\VIM/*</span></div><div class="line"># 对包含空格文件夹的特殊处理：</div><div class="line"><span class="meta">:set path+=.,D:\Proram\\\</span> Files\\\ (x86)\hexo\source\<span class="emphasis">_posts</span></div></pre></td></tr></table></figure></p>
+<h3 id="参考-1"><a href="#参考-1" class="headerlink" title="参考:"></a>参考:</h3><ul>
+<li>《Vim 实用技巧》技巧42 使用<code>:find</code>命令打开文件</li>
+<li><a href="http://blog.csdn.net/neosmith/article/details/17308119" target="_blank" rel="external">使用vim的find命令快速打开文件 - 王鸿飞的专栏 - 博客频道 - CSDN.NET</a></li>
+<li>官方文档 :help path</li>
+</ul>
+<hr>
+<hr>
+<h2 id="Vim-重复上一个宏命令："><a href="#Vim-重复上一个宏命令：" class="headerlink" title="Vim 重复上一个宏命令："></a>Vim 重复上一个宏命令：</h2><p>@：</p>
+<h3 id="参考：-1"><a href="#参考：-1" class="headerlink" title="参考："></a>参考：</h3><ul>
+<li>《Vim 实用技巧》技巧31 重复上次的 Ex 命令</li>
+</ul>
+<hr>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/2016/08/07/Use-Java/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一页</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2016/08/05/Use-Hexo/" class="alignright next">下一页<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+
+    <!-- share -->
+    
+        
+
+        
+
+    
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">留言</h2>
+
+  
+</section>
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2016-08-06 
+	</div>
+	
+
+	<!-- categories -->
+    
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/vim/">vim<span>1</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2016 sqsgalaxys
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-76189459-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+   </html>

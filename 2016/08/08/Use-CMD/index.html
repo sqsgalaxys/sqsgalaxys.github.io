@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>vim 使用 | sqsgalaxys&#39;Blog</title>
+  <title>Use CMD | sqsgalaxys&#39;Blog</title>
   <meta name="author" content="sqsgalaxys">
   
   <meta name="description" content="Note">
@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="vim 使用"/>
+  <meta property="og:title" content="Use CMD"/>
   <meta property="og:site_name" content="sqsgalaxys&#39;Blog"/>
 
   
@@ -100,7 +100,7 @@
 
 	
 		<div class="page-header page-header-inverse ">		
-			<h1 class="title title-inverse "> vim 使用</h1>
+			<h1 class="title title-inverse "> Use CMD</h1>
 		</div>		
 	
 
@@ -120,32 +120,15 @@
 	<div class="mypage">		
 	  		
 
-	  <h1 id="vim-使用"><a href="#vim-使用" class="headerlink" title="vim 使用"></a>vim 使用</h1><hr>
-<p>删除文件中所有的空行 :<br><code>:g/^$/d</code><br><a href="http://bbs.chinaunix.net/thread-510754-1-1.html" target="_blank" rel="external">如何在vim中删除空行-Shell-ChinaUnix.net</a></p>
-<hr>
-<p>整行移动 :</p>
-<ul>
-<li>移动到行首<br><code>0</code></li>
-<li>移动到行尾<br><code>$</code></li>
-<li>移动到下一行开头<br><code>+</code></li>
-<li>移动到上一行开头<br><code>-</code></li>
+	  <h1 id="使用-CMD"><a href="#使用-CMD" class="headerlink" title="使用 CMD"></a>使用 CMD</h1><h2 id="使用-CMD-查看端口占用情况并结束占用的程序"><a href="#使用-CMD-查看端口占用情况并结束占用的程序" class="headerlink" title="使用 CMD 查看端口占用情况并结束占用的程序"></a>使用 CMD 查看端口占用情况并结束占用的程序</h2><p>查看所有的端口占用情况<br><code>netstat -an0</code><br>查看指定端口的占用情况<br><code>netstat -an0|findstr &quot;4000&quot;</code><br>查看PID对应的进程<br><code>tasklist|findstr &quot;1234&quot;</code><br>结束进程<br><code>taskkill /f /t /im ***.exe</code></p>
+<h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><ul>
+<li><a href="http://www.iteye.com/topic/1117270" target="_blank" rel="external">windows 如何查看端口占用情况? - Windows - language - ITeye论坛</a></li>
 </ul>
 <hr>
-<p>符号 <code>.</code> :<br>重复命令<br>当前行<br><code>.-1</code> 代表当前行的上一行</p>
-<hr>
-<p>MiniBufExplorer<br>MiniBufExplorer 是什麽？<br>MiniBufExplorer 安装<br>MiniBufExplorer 使用</p>
-<h3 id="Link"><a href="#Link" class="headerlink" title="Link:"></a>Link:</h3><ul>
-<li><a href="https://github.com/fholgado/minibufexpl.vim" target="_blank" rel="external">fholgado/minibufexpl.vim: Elegant buffer explorer - takes very little screen space</a></li>
-<li><a href="https://bbs.sjtu.edu.cn/bbsanc,path,%2Fgroups%2FGROUP_3%2FGNULinux%2FSoftware%2FD95E89182%2FD5277E56B%2FA96F89F1C.html" target="_blank" rel="external">快速浏览和操作Buffer – 插件: MiniBufExplorer</a></li>
+<h2 id="tasklist-命令"><a href="#tasklist-命令" class="headerlink" title="tasklist 命令"></a><code>tasklist</code> 命令</h2><ul>
+<li><a href="https://technet.microsoft.com/en-us/library/bb491010.aspx" target="_blank" rel="external">Tasklist</a></li>
 </ul>
-<hr>
-<p>buffer 的使用:<br>下一个 buffer<br><code>:bn</code><br>上一个 buffer<br><code>:bp</code><br>打开名称为 filename 的文件<br><code>:e&lt;filename&gt;</code><br>显示当前打开的 buffer<br><code>:ls</code><br>n 为数字，打开第 n 个buffer<br><code>:b&lt;n&gt;</code><br>自动补全<br><code>:b&lt;tab&gt;</code><br>删除 buffer<br><code>:bd</code></p>
-<hr>
-<p>进制操作:<br>// 正常打开文件，默认添加一个换行行<br><code>vim filename</code><br>// 以二进制打开文件<br><code>vim -b filename</code><br>// 进入 16 进制查看编辑模式,如果在这个模式下执行 <code>:wq</code> 命令会把文件直接保存成这个界面(会把当前界面都保存成字符)<br><code>:%xxd</code><br>// 修改 16 进制内容后 回到普通模式，可以看到修改产生的变化，这时执行 <code>:wq</code> 不会保存到 16 进制的模式<br><code>:%xxd -r</code></p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">echo -<span class="keyword">n</span> <span class="string">"test"</span> &gt; <span class="keyword">test</span>.bin</div><div class="line"><span class="keyword">cat</span> <span class="keyword">test</span>.bin</div><div class="line">vim -b <span class="keyword">test</span>.bin</div><div class="line">:%!xxd</div><div class="line">vim <span class="keyword">test</span>.bin</div><div class="line">:%!xxd</div><div class="line">0x0a</div><div class="line">vim -b <span class="keyword">test</span>.bin</div><div class="line">:%!xxd</div><div class="line"><span class="comment">// 修改 </span></div><div class="line">:%!xxd -<span class="built_in">r</span></div><div class="line">:wq</div></pre></td></tr></table></figure>
-<p><a href="http://www.cnblogs.com/killkill/archive/2010/06/23/1763785.html" target="_blank" rel="external">在Linux下使用vim配合xxd查看并编辑二进制文件 - killkill - 博客园</a></p>
-<h2 id="linux下用vim实现ultraEdit的功能-Jason-Damon-博客园"><a href="#linux下用vim实现ultraEdit的功能-Jason-Damon-博客园" class="headerlink" title="linux下用vim实现ultraEdit的功能 - Jason Damon - 博客园"></a><a href="http://www.cnblogs.com/Jason-Damon/archive/2013/05/04/3059343.html" target="_blank" rel="external">linux下用vim实现ultraEdit的功能 - Jason Damon - 博客园</a></h2><hr>
-<h2 id="q1-q"><a href="#q1-q" class="headerlink" title=":q1 = :q!"></a><code>:q1</code> = <code>:q!</code></h2>	  
+	  
 	</div>
 
 	<div>
@@ -153,14 +136,14 @@
 	<div class="pagination">
 <ul class="pagination">
 	 
-				
-    	<li class="prev"><a href="/2016/08/07/design-patterns/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一页</a></li>
-  		
+		
+          <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>上一页</a></li>
+        
 
         <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
 
 		
-		   <li class="next"><a href="/2016/08/05/hexo-command/" class="alignright next">下一页<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+		   <li class="next"><a href="/2016/08/08/Use-Chrome/" class="alignright next">下一页<i class="fa fa-arrow-circle-o-right"></i></a></li>         
         
 	
 </ul>
@@ -195,7 +178,7 @@
 	
 	<div class="meta-widget">
 	<i class="fa fa-clock-o"></i>
-	2016-08-06 
+	2016-08-08 
 	</div>
 	
 
@@ -208,7 +191,7 @@
 	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
     <ul id="tags" class="tag_box list-unstyled collapse in">	  
 	    
-  <li><a href="/tags/vim/">vim<span>1</span></a></li>
+  <li><a href="/tags/Use/">Use<span>2</span></a></li> <li><a href="/tags/cmd/">cmd<span>1</span></a></li>
     </ul>
 	</div>
 		
