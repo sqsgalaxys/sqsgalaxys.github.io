@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Java Reflect | sqsgalaxys&#39;Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta property="og:type" content="article">
+<meta property="og:title" content="Java Reflect">
+<meta property="og:url" content="http://yoursite.com/2016/08/09/Java-Reflect/index.html">
+<meta property="og:site_name" content="sqsgalaxys'Blog">
+<meta property="og:updated_time" content="2016-08-10T00:19:18.948Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java Reflect">
+    
+
+    
+        <link rel="alternate" href="/" title="sqsgalaxys&#39;Blog" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendor/open-sans/styles.css">
+    <link rel="stylesheet" href="/vendor/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/vendor/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/vendor/fancybox/jquery.fancybox.css">
+    
+    
+    
+    
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">sqsgalaxys&#39;Blog</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.jpg" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.jpg" />
+            <h2 id="name">sqsgalaxys</h2>
+            <h3 id="title">Novice</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>China</span>
+            <a id="follow" target="_blank" href="https://github.com/sqsgalaxys/">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                11
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                9
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="http://github.com/sqsgalaxys/" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="facebook" class=tooltip>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="dribbble" class=tooltip>
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-Java-Reflect" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Java Reflect
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/08/09/Java-Reflect/">
+            <time datetime="2016-08-09T04:38:42.000Z" itemprop="datePublished">2016-08-09</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Java/">Java</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <hr>
+<a id="more"></a>
+<h2 id="Class-forName"><a href="#Class-forName" class="headerlink" title="Class.forName()"></a><code>Class.forName()</code></h2><ol>
+<li>创建两个类:狗类、猫类继承父类动物接口,并实现其叫喊方法.</li>
+<li>创建一个测试类,通过传入不同动物的名称输出其叫声.比如狗就是汪汪,猫就是喵喵.</li>
+</ol>
+<h3 id="定义动物借口"><a href="#定义动物借口" class="headerlink" title="定义动物借口"></a>定义动物借口</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.sqsgalaxys.testReflect;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Animal</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">scream</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="定义猫类"><a href="#定义猫类" class="headerlink" title="定义猫类"></a>定义猫类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">package</span> com.sqsgalaxys.testReflect;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">implements</span> <span class="title">Animal</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">scream</span><span class="params">()</span> </span>&#123;</div><div class="line">		System.out.println(<span class="string">"miao,miao"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="定义狗类"><a href="#定义狗类" class="headerlink" title="定义狗类"></a>定义狗类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">package</span> com.sqsgalaxys.testReflect;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">implements</span> <span class="title">Animal</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">scream</span><span class="params">()</span> </span>&#123;</div><div class="line">		System.out.println(<span class="string">"wang,wang"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="不使用反射的写法的测试类"><a href="#不使用反射的写法的测试类" class="headerlink" title="不使用反射的写法的测试类"></a>不使用反射的写法的测试类</h3><figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">package com.sqsgalaxys.testReflect;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">AnimalTest</span> &#123;</div><div class="line">	Animal animal = <span class="literal">null</span>;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">makeNoise</span>(<span class="params">String flag</span>) </span>&#123;</div><div class="line">		<span class="keyword">if</span> (<span class="string">"狗"</span>.equals(flag)) &#123;</div><div class="line">			animal = <span class="keyword">new</span> Dog();</div><div class="line">			animal.scream();</div><div class="line">		&#125; <span class="function"><span class="keyword">else</span> <span class="title">if</span> (<span class="params"><span class="string">"猫"</span>.equals(flag</span>)) </span>&#123;</div><div class="line">			animal = <span class="keyword">new</span> Cat();</div><div class="line">			animal.scream();</div><div class="line">		&#125; <span class="function"><span class="keyword">else</span> <span class="title">if</span> (<span class="params"><span class="string">"羊"</span>.equals(flag</span>)) </span>&#123;</div><div class="line">			<span class="comment">// animal = new Sheep();</span></div><div class="line">			<span class="comment">// animal.scream();</span></div><div class="line">		&#125;</div><div class="line">		<span class="comment">// else if .....</span></div><div class="line">		<span class="keyword">else</span> &#123;</div><div class="line">			System.<span class="keyword">out</span>.println(<span class="string">"没有发现任何动物"</span>);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</div><div class="line">		AnimalTest at = <span class="keyword">new</span> AnimalTest();</div><div class="line">		<span class="comment">// 输出猫的叫声</span></div><div class="line">		at.makeNoise(<span class="string">"猫"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="使用反射的写法的测试类"><a href="#使用反射的写法的测试类" class="headerlink" title="使用反射的写法的测试类"></a>使用反射的写法的测试类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">package</span> com.sqsgalaxys.testReflect;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AnimalTestEx</span> </span>&#123;</div><div class="line">	Animal animal = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">makeNoise</span><span class="params">(String animalName)</span> </span>&#123;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			animal = (Animal) Class.forName(animalName).newInstance();</div><div class="line">		&#125; <span class="keyword">catch</span> (InstantiationException |</div><div class="line">                IllegalAccessException |</div><div class="line">                ClassNotFoundException e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">		animal.scream();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		AnimalTestEx at = <span class="keyword">new</span> AnimalTestEx();</div><div class="line">		at.makeNoise(<span class="string">"com.sqsgalaxys.testReflect.Cat"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Class-forName-newInstance-getDeclaredMethod"><a href="#Class-forName-newInstance-getDeclaredMethod" class="headerlink" title="Class.forName() newInstance() getDeclaredMethod()"></a><code>Class.forName() newInstance() getDeclaredMethod()</code></h2><h2 id="invoke-getDeclaredField-setAccessible"><a href="#invoke-getDeclaredField-setAccessible" class="headerlink" title="invoke() getDeclaredField() setAccessible()"></a><code>invoke() getDeclaredField() setAccessible()</code></h2><h2 id=""><a href="#" class="headerlink" title="...."></a><code>....</code></h2><h4 id="待反射获取的类Student"><a href="#待反射获取的类Student" class="headerlink" title="待反射获取的类Student"></a>待反射获取的类<code>Student</code></h4><figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">package com.sqsgalaxys.testReflectEx;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Student</span> &#123;  </div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;  </div><div class="line">    <span class="keyword">private</span> String name;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAge</span>(<span class="params"></span>) </span>&#123;  </div><div class="line">        <span class="keyword">return</span> age;  </div><div class="line">    &#125;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span>(<span class="params"><span class="keyword">int</span> age</span>) </span>&#123;  </div><div class="line">        <span class="keyword">this</span>.age = age;  </div><div class="line">    &#125;  </div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span>(<span class="params"></span>) </span>&#123;  </div><div class="line">        <span class="keyword">return</span> name;  </div><div class="line">    &#125;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span>(<span class="params">String name</span>) </span>&#123;  </div><div class="line">        <span class="keyword">this</span>.name = name;  </div><div class="line">    &#125;  </div><div class="line">      </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">hi</span>(<span class="params"><span class="keyword">int</span> age,String name</span>)</span>&#123;  </div><div class="line">        System.<span class="keyword">out</span>.println(<span class="string">"大家好，我叫"</span>+name+<span class="string">"，今年"</span>+age+<span class="string">"岁"</span>);  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="测试类Test"><a href="#测试类Test" class="headerlink" title="测试类Test"></a>测试类<code>Test</code></h4><figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">package</span> com.sqsgalaxys.testReflectEx;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.lang.reflect.Field;</div><div class="line"><span class="keyword">import</span> java.lang.reflect.InvocationTargetException;</div><div class="line"><span class="keyword">import</span> java.lang.reflect.Method;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> Test &#123;</div><div class="line">	@SuppressWarnings(&#123; <span class="string">"unchecked"</span>, <span class="string">"unused"</span> &#125;)</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args)</div><div class="line">			<span class="keyword">throws</span> IllegalAccessException, IllegalArgumentException, InvocationTargetException, InstantiationException,</div><div class="line">			ClassNotFoundException, NoSuchMethodException, SecurityException, NoSuchFieldException &#123;</div><div class="line">		<span class="comment">// 反射使用的三个步骤:</span></div><div class="line">		<span class="comment">// 1. 得到要调用类的 class</span></div><div class="line">		<span class="comment">// 2. 得到要调用的类中的方法</span></div><div class="line">		<span class="comment">// 3. 方法调用 (invoke)</span></div><div class="line"></div><div class="line">		<span class="comment">// JAVA反射的常规使用步骤</span></div><div class="line">		<span class="keyword">Class</span>&lt;?&gt; cls = <span class="keyword">Class</span>.forName(<span class="string">"com.sqsgalaxys.testReflectEx.Student"</span>);</div><div class="line"></div><div class="line">		Method m = cls.getDeclaredMethod(<span class="string">"hi"</span>, <span class="keyword">new</span> <span class="keyword">Class</span>[] &#123; <span class="keyword">int</span>.<span class="keyword">class</span>, String.<span class="keyword">class</span> &#125;);</div><div class="line">		m.invoke(cls.newInstance(), <span class="number">21</span>, <span class="string">"test"</span>);</div><div class="line">		<span class="comment">// 方法调用中的参数类型</span></div><div class="line">		<span class="comment">// 正确调用</span></div><div class="line">		<span class="comment">// Method setMethod = cls.getDeclaredMethod("setAge", Integer.class);</span></div><div class="line">		<span class="comment">// setMethod.invoke(cls.newInstance(), 15);</span></div><div class="line">		<span class="comment">// 不正确调用</span></div><div class="line">		<span class="comment">// Method setMethod = cls.getDeclaredMethod("setAge", int.class);</span></div><div class="line">		<span class="comment">// setMethod.invoke(cls.newInstance(), 15);</span></div><div class="line">		<span class="comment">// 异常信息</span></div><div class="line">		<span class="comment">// Exception in thread "main" java.lang.NoSuchMethodException:</span></div><div class="line">		<span class="comment">// com.sqsgalaxys.testReflectEx.Student.setAge(int)</span></div><div class="line">		<span class="comment">// at java.lang.Class.getDeclaredMethod(Unknown Source)</span></div><div class="line">		<span class="comment">// at com.sqsgalaxys.testReflectEx.Test.main(Test.java:**)</span></div><div class="line"></div><div class="line">		<span class="comment">// 参数类型要一致</span></div><div class="line"></div><div class="line">		<span class="comment">// static方法的反射调用</span></div><div class="line">		<span class="comment">// static方法调用时，不必得到对象实例</span></div><div class="line">		<span class="comment">// Method staticMethod = cls.getDeclaredMethod("hi", int.class,</span></div><div class="line">		<span class="comment">// String.class);</span></div><div class="line">		<span class="comment">// staticMethod.invoke(cls, 20, "test");</span></div><div class="line">		<span class="comment">// staticMethod.invoke(cls.newInstance(), 21, "test");</span></div><div class="line"></div><div class="line">		<span class="comment">// private 的成员变量赋值</span></div><div class="line">		<span class="comment">// 直接赋值</span></div><div class="line">		<span class="comment">// Object student = cls.newInstance();// 得到一个实例</span></div><div class="line">		<span class="comment">// Field field = cls.getDeclaredField("age");</span></div><div class="line">		<span class="comment">// field.set(student, 10);</span></div><div class="line">		<span class="comment">// System.out.println(field.get(student));</span></div><div class="line">		<span class="comment">// 异常信息</span></div><div class="line">		<span class="comment">// Exception in thread "main" java.lang.IllegalAccessException: Class</span></div><div class="line">		<span class="comment">// com.sqsgalaxys.testReflectEx.Test can not access a member of class</span></div><div class="line">		<span class="comment">// com.sqsgalaxys.testReflectEx.Student with modifiers "private"</span></div><div class="line">		<span class="comment">// at sun.reflect.Reflection.ensureMemberAccess(Unknown Source)</span></div><div class="line">		<span class="comment">// at java.lang.reflect.AccessibleObject.slowCheckMemberAccess(Unknown</span></div><div class="line">		<span class="comment">// Source)</span></div><div class="line">		<span class="comment">// at java.lang.reflect.AccessibleObject.checkAccess(Unknown Source)</span></div><div class="line">		<span class="comment">// at java.lang.reflect.Field.set(Unknown Source)</span></div><div class="line">		<span class="comment">// at com.sqsgalaxys.testReflectEx.Test.main(Test.java:47)</span></div><div class="line">		<span class="comment">// private 的成员变量赋值</span></div><div class="line">		<span class="comment">// 解决方法1 setAccessible()</span></div><div class="line">		<span class="comment">// Object student = cls.newInstance();</span></div><div class="line">		<span class="comment">// Field field = cls.getDeclaredField("age");</span></div><div class="line">		<span class="comment">// field.setAccessible(true);//设置允许访问</span></div><div class="line">		<span class="comment">// field.set(student, 10);</span></div><div class="line">		<span class="comment">// System.out.println(field.get(student));</span></div><div class="line"></div><div class="line">		<span class="comment">// private 的成员变量赋值</span></div><div class="line">		<span class="comment">// 解决方法2</span></div><div class="line">		<span class="comment">// Object student = cls.newInstance();</span></div><div class="line">		<span class="comment">// Method setMethod = cls.getDeclaredMethod("setAge", Integer.class);</span></div><div class="line">		<span class="comment">// setMethod.invoke(student, 15);// 调用set方法</span></div><div class="line">		<span class="comment">// Method getMethod = cls.getDeclaredMethod("getAge");</span></div><div class="line">		<span class="comment">// System.out.println(getMethod.invoke(student));</span></div><div class="line"></div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考:"></a>参考:</h4><ul>
+<li><a href="http://ranji13.iteye.com/blog/2295269" target="_blank" rel="external">十八、Java从头开始- Java反射的使用 - ranji13 - ITeye技术网站</a></li>
+<li><a href="http://blog.csdn.net/hbcui1984/article/details/2719089" target="_blank" rel="external">JAVA反射使用手记 - hbcui1984的专栏 - 博客频道 - CSDN.NET</a></li>
+</ul>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2016/08/09/Java-Reflect/" data-id="ciro6h7m00005qsjyys5p6hh0" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2016/08/09/Java-Reflect/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2016/08/09/Java-Reflect/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2016/08/08/Use-Git/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">Use Git</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+</section>
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">编程</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">11</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CMD/">CMD</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/">Chrome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Use/">Use</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wireshark/">Wireshark</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/CMD/" style="font-size: 10px;">CMD</a> <a href="/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Use/" style="font-size: 20px;">Use</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/Wireshark/" style="font-size: 10px;">Wireshark</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2016 sqsgalaxys<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_config = function () {
+        
+            this.page.url = 'http://yoursite.com/2016/08/09/Java-Reflect/';
+        
+        this.page.identifier = 'Java-Reflect';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'hexo-theme-icarus' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+
+
+    
+        <script src="/vendor/fancybox/jquery.fancybox.pack.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

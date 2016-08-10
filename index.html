@@ -1,618 +1,1601 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang=zh>
 <head>
-  <meta charset="utf-8">
-  
-  <title>sqsgalaxys&#39;Blog</title>
-  <meta name="author" content="sqsgalaxys">
-  
-  <meta name="description" content="Note">
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta charset="utf-8">
+    
+    <title>sqsgalaxys&#39;Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Note">
+<meta property="og:type" content="website">
+<meta property="og:title" content="sqsgalaxys'Blog">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="sqsgalaxys'Blog">
+<meta property="og:description" content="Note">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="sqsgalaxys'Blog">
+<meta name="twitter:description" content="Note">
+    
 
-  
-  <meta property="og:site_name" content="sqsgalaxys&#39;Blog"/>
+    
+        <link rel="alternate" href="/" title="sqsgalaxys&#39;Blog" type="application/atom+xml" />
+    
 
-  
-    <meta property="og:image" content="undefined"/>
-  
+    
 
-  
-  
-    <link href="/favicon.png" rel="icon">
-  
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendor/open-sans/styles.css">
+    <link rel="stylesheet" href="/vendor/source-code-pro/styles.css">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="/css/themes/bootstrap.css" media="screen" type="text/css">
-  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
-  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
-  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <link rel="stylesheet" href="/css/style.css">
 
-  <script src="/js/jquery-2.0.3.min.js"></script>
-
-  <!-- analytics -->
-  
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'sqsgalaxys.github.io/', 'auto');
-  ga('send', 'pageview');
-</script>
-
-
-
+    <script src="/vendor/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/vendor/fancybox/jquery.fancybox.css">
+    
+    
+    
+    
 
 </head>
 
- <body>  
-  <nav id="main-nav" class="navbar navbar-inverse navbar-default navbar-fixed-top" role="navigation">
-    <div class="container">
-      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-	<span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-       <a class="navbar-brand" href="/">sqsgalaxys&#39;Blog</a>
-      <div class="collapse navbar-collapse nav-menu">
-		<ul class="nav navbar-nav">
-		  
-		  <li>
-			<a href="/archives" title="All the articles.">
-			  <i class="fa fa-archive"></i>Archives
-			</a>
-		  </li>
-		  
-		  <li>
-			<a href="/categories" title="All the categories.">
-			  <i class="fa fa-folder"></i>Categories
-			</a>
-		  </li>
-		  
-		  <li>
-			<a href="/tags" title="All the tags.">
-			  <i class="fa fa-tags"></i>Tags
-			</a>
-		  </li>
-		  
-		  <li>
-			<a href="/about" title="About me.">
-			  <i class="fa fa-user"></i>About
-			</a>
-		  </li>
-		  
-		</ul>
-      </div>
-    </div> <!-- container -->
-</nav>
-<div class="clearfix"></div>
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">sqsgalaxys&#39;Blog</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.jpg" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
 
-  <div class="container">
-  	<div class="content">
-    	 <div class="page-header page-header-inverse ">
-  <h1 class="title title-inverse ">不以物喜，不以己悲....</h1>
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.jpg" />
+            <h2 id="name">sqsgalaxys</h2>
+            <h3 id="title">Novice</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>China</span>
+            <a id="follow" target="_blank" href="https://github.com/sqsgalaxys/">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                11
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                9
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="http://github.com/sqsgalaxys/" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="facebook" class=tooltip>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="dribbble" class=tooltip>
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main">
+    <article id="post-Java-Reflect" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2016/08/09/Java-Reflect/">Java Reflect</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/08/09/Java-Reflect/">
+            <time datetime="2016-08-09T04:38:42.000Z" itemprop="datePublished">2016-08-09</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Java/">Java</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><hr></p>
+            <p class="article-more-link">
+                <a href="/2016/08/09/Java-Reflect/#more">查看更多</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
 </div>
 
-<div class="row page">
+    <a data-url="http://yoursite.com/2016/08/09/Java-Reflect/" data-id="ciro6h7m00005qsjyys5p6hh0" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
 
-	
-	<div class="col-md-9">
-	
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
 
-		<div class="slogan">
-      <i class="fa fa-heart"></i>
-      Yet another bootstrap theme.
-</div>    
-		<div id="top_search"></div>
-		<div class="mypage">
-		
-		<!-- title and entry -->
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2016-08-08 </div>
-			<div class="article-title"><a href="/2016/08/08/Use-Git/" >Use Git</a></div>						
-		</h3>
-	
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2016/08/09/Java-Reflect/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2016/08/09/Java-Reflect/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
 
 
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h1 id="使用-Git"><a href="#使用-Git" class="headerlink" title="使用 Git"></a>使用 Git</h1><h2 id="强制从远程仓库获取代码覆盖本地"><a href="#强制从远程仓库获取代码覆盖本地" class="headerlink" title="强制从远程仓库获取代码覆盖本地"></a>强制从远程仓库获取代码覆盖本地</h2><h2 id="强制用本地代码覆盖远程仓库"><a href="#强制用本地代码覆盖远程仓库" class="headerlink" title="强制用本地代码覆盖远程仓库"></a>强制用本地代码覆盖远程仓库</h2>
-	
-	</div>
-  <a type="button" href="/2016/08/08/Use-Git/#more" class="btn btn-default more">阅读此文</a>
+
+    <article id="post-Use-Git" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2016/08/08/Use-Git/">Use Git</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/08/08/Use-Git/">
+            <time datetime="2016-08-08T11:45:21.000Z" itemprop="datePublished">2016-08-08</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Git/">Git</a>, <a class="tag-link" href="/tags/Use/">Use</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><h3 id="版本控制系统"><a href="#版本控制系统" class="headerlink" title="版本控制系统"></a>版本控制系统</h3><ul>
+<li><code>Subversion</code></li>
+<li><code>CVS</code></li>
+<li><code>Perforce</code></li>
+<li><code>snapshot</code><br><code>Delta Storage systems</code></li>
+</ul></p>
+            <p class="article-more-link">
+                <a href="/2016/08/08/Use-Git/#more">查看更多</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
 </div>
 
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2016-08-08 </div>
-			<div class="article-title"><a href="/2016/08/08/Use-CMD/" >Use CMD</a></div>						
-		</h3>
-	
+    <a data-url="http://yoursite.com/2016/08/08/Use-Git/" data-id="ciro6h7lm0003qsjysfnz5qds" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2016/08/08/Use-Git/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2016/08/08/Use-Git/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
 
 
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h1 id="使用-CMD"><a href="#使用-CMD" class="headerlink" title="使用 CMD"></a>使用 CMD</h1><h2 id="使用-CMD-查看端口占用情况并结束占用的程序"><a href="#使用-CMD-查看端口占用情况并结束占用的程序" class="headerlink" title="使用 CMD 查看端口占用情况并结束占用的程序"></a>使用 CMD 查看端口占用情况并结束占用的程序</h2><p>查看所有的端口占用情况<br><code>netstat -an0</code><br>查看指定端口的占用情况<br><code>netstat -an0|findstr &quot;4000&quot;</code><br>查看PID对应的进程<br><code>tasklist|findstr &quot;1234&quot;</code><br>结束进程<br><code>taskkill /f /t /im ***.exe</code></p>
-<h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><ul>
-<li><a href="http://www.iteye.com/topic/1117270" target="_blank" rel="external">windows 如何查看端口占用情况? - Windows - language - ITeye论坛</a></li>
-</ul>
-<hr>
-<h2 id="tasklist-命令"><a href="#tasklist-命令" class="headerlink" title="tasklist 命令"></a><code>tasklist</code> 命令</h2><ul>
-<li><a href="https://technet.microsoft.com/en-us/library/bb491010.aspx" target="_blank" rel="external">Tasklist</a></li>
-</ul>
 
-	
-	</div>
-  <a type="button" href="/2016/08/08/Use-CMD/#more" class="btn btn-default more">阅读此文</a>
+    <article id="post-Use-CMD" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2016/08/08/Use-CMD/">Use CMD</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/08/08/Use-CMD/">
+            <time datetime="2016-08-08T09:48:56.000Z" itemprop="datePublished">2016-08-08</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/CMD/">CMD</a>, <a class="tag-link" href="/tags/Use/">Use</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><h1 id="使用-CMD"><a href="#使用-CMD" class="headerlink" title="使用 CMD"></a>使用 CMD</h1><h2 id="使用-CMD-查看端口占用情况并结束占用的程序"><a href="#使用-CMD-查看端口占用情况并结束占用的程序" class="headerlink" title="使用 CMD 查看端口占用情况并结束占用的程序"></a>使用 CMD 查看端口占用情况并结束占用的程序</h2><p>查看所有的端口占用情况<br><code>netstat -an0</code><br>查看指定端口的占用情况<br><code>netstat -an0|findstr &quot;4000&quot;</code><br></p>
+            <p class="article-more-link">
+                <a href="/2016/08/08/Use-CMD/#more">查看更多</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
 </div>
 
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2016-08-08 </div>
-			<div class="article-title"><a href="/2016/08/08/Use-Chrome/" >Use Chrome</a></div>						
-		</h3>
-	
+    <a data-url="http://yoursite.com/2016/08/08/Use-CMD/" data-id="ciro6h7ld0002qsjynzq37dfi" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2016/08/08/Use-CMD/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2016/08/08/Use-CMD/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
 
 
-			<div class="entry">
-  <div class="row">
-	
-	
-		<p><a href="https://chrome.google.com/webstore/detail/copy-2-clipboard-with-eas/hiiobhaaokpmdmkkcaokdlanlemmcoah" target="_blank" rel="external">copy 2 clipboard with ease - Chrome 网上应用店</a><br><code>[title](url &quot;&quot;)</code><br><a href="https://chrome.google.com/webstore/detail/lastpass-free-password-ma/hdokiejnpimakedhajhdlcegeplioahd" target="_blank" rel="external">LastPass: Free Password Manager - Chrome 网上应用店</a><br><a href="https://chrome.google.com/webstore/detail/vim-tips-new-tab-replacem/lbhnkgjaoonakhladmcjkemebepeohkn" target="_blank" rel="external">Vim Tips - New Tab Replacement - Chrome 网上应用店</a><br><a href="https://chrome.google.com/webstore/detail/onetab/chphlpgkkbolifaimnlloiipkdnihall" target="_blank" rel="external">OneTab - Chrome 网上应用店</a><br><a href="https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb" target="_blank" rel="external">Vimium - Chrome 网上应用店</a></p>
 
-	
-	</div>
-  <a type="button" href="/2016/08/08/Use-Chrome/#more" class="btn btn-default more">阅读此文</a>
+    <article id="post-Use-Chrome" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2016/08/08/Use-Chrome/">Use Chrome</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/08/08/Use-Chrome/">
+            <time datetime="2016-08-08T09:02:17.000Z" itemprop="datePublished">2016-08-08</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Chrome/">Chrome</a>, <a class="tag-link" href="/tags/Use/">Use</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <a id="more"></a>
+<p><a href="https://chrome.google.com/webstore/detail/copy-2-clipboard-with-eas/hiiobhaaokpmdmkkcaokdlanlemmcoah" target="_blank" rel="external">copy 2 clipboard with ease - Chrome 网上应用店</a><br><code>[title](url &quot;&quot;)</code><br><a href="https://chrome.google.com/webstore/detail/lastpass-free-password-ma/hdokiejnpimakedhajhdlcegeplioahd" target="_blank" rel="external">LastPass: Free Password Manager - Chrome 网上应用店</a><br><a href="https://chrome.google.com/webstore/detail/vim-tips-new-tab-replacem/lbhnkgjaoonakhladmcjkemebepeohkn" target="_blank" rel="external">Vim Tips - New Tab Replacement - Chrome 网上应用店</a><br><a href="https://chrome.google.com/webstore/detail/onetab/chphlpgkkbolifaimnlloiipkdnihall" target="_blank" rel="external">OneTab - Chrome 网上应用店</a><br><a href="https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb" target="_blank" rel="external">Vimium - Chrome 网上应用店</a></p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
 </div>
 
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2016-08-08 </div>
-			<div class="article-title"><a href="/2016/08/08/The-Day/" >The day</a></div>						
-		</h3>
-	
+    <a data-url="http://yoursite.com/2016/08/08/Use-Chrome/" data-id="ciro6h7mg0008qsjyitj00l87" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2016/08/08/Use-Chrome/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2016/08/08/Use-Chrome/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
 
 
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="生日快乐～～"><a href="#生日快乐～～" class="headerlink" title="生日快乐～～"></a>生日快乐～～</h2><p><img src="http://obkpw0khh.bkt.clouddn.com/2016-08-08%20%286%29.png" alt="0808"></p>
-<hr>
-<p><img src="http://obkpw0khh.bkt.clouddn.com/2016-08-08%20%287%29.png" alt="0808"></p>
-<hr>
-<p><img src="http://obkpw0khh.bkt.clouddn.com/2016-08-08.png" alt="0808"></p>
-<hr>
 
-	
-	</div>
-  <a type="button" href="/2016/08/08/The-Day/#more" class="btn btn-default more">阅读此文</a>
+    <article id="post-The-Day" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2016/08/08/The-Day/">The day</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/08/08/The-Day/">
+            <time datetime="2016-08-08T02:46:32.000Z" itemprop="datePublished">2016-08-08</time>
+        </a>
+    </div>
+
+
+                        
+                        
+                    </div>
+                
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><h2 id="生日快乐～～"><a href="#生日快乐～～" class="headerlink" title="生日快乐～～"></a>生日快乐～～</h2></p>
+            <p class="article-more-link">
+                <a href="/2016/08/08/The-Day/#more">查看更多</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
 </div>
 
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2016-08-08 </div>
-			<div class="article-title"><a href="/2016/08/08/Use-Linux/" >Use Linux</a></div>						
-		</h3>
-	
+    <a data-url="http://yoursite.com/2016/08/08/The-Day/" data-id="ciro6h7l10000qsjy45l43de4" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2016/08/08/The-Day/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2016/08/08/The-Day/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
 
 
-			<div class="entry">
-  <div class="row">
-	
-	
-		<hr>
+
+    <article id="post-Use-Linux" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2016/08/08/Use-Linux/">Use Linux</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/08/08/Use-Linux/">
+            <time datetime="2016-08-08T01:49:17.000Z" itemprop="datePublished">2016-08-08</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Linux/">Linux</a>, <a class="tag-link" href="/tags/Use/">Use</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><hr>
 <p>Linux 启动设置:</p>
-<p><code>sudo vi /etc/inittab</code></p>
-<figure class="highlight vala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta"># Default runlevel. The runlevels used are:</span></div><div class="line"><span class="meta">#   0 - halt (Do NOT set initdefault to this)</span></div><div class="line"><span class="meta">#   1 - Single user mode</span></div><div class="line"><span class="meta">#   2 - Multiuser, without NFS (The same as 3, if you do not have networking)</span></div><div class="line"><span class="meta">#   3 - Full multiuser mode</span></div><div class="line"><span class="meta">#   4 - unused</span></div><div class="line"><span class="meta">#   5 - X11</span></div><div class="line"><span class="meta">#   6 - reboot (Do NOT set initdefault to this)</span></div><div class="line"><span class="meta">#</span></div><div class="line"></div><div class="line"><span class="meta">#id:3:initdefault:</span></div><div class="line"><span class="meta">#id:5:initdefault:</span></div></pre></td></tr></table></figure>
-<h2 id="Linux启动界面切换-图形界面-字符界面-转-草原和大树-博客园"><a href="#Linux启动界面切换-图形界面-字符界面-转-草原和大树-博客园" class="headerlink" title="Linux启动界面切换:图形界面-字符界面(转) - 草原和大树 - 博客园"></a><a href="http://www.cnblogs.com/JemBai/archive/2011/09/15/2177386.html" target="_blank" rel="external">Linux启动界面切换:图形界面-字符界面(转) - 草原和大树 - 博客园</a></h2><p>重启命令<br><code>sudo reboot</code><br>关机<br><code>sudo poweroff</code><br><a href="http://askubuntu.com/questions/187071/how-do-i-shut-down-or-reboot-from-a-terminal" target="_blank" rel="external">command line - How do I shut down or reboot from a terminal? - Ask Ubuntu</a></p>
-<hr>
-<hr>
-<hr>
-<p><code>echo</code> 命令<br>echo -n</p>
-<hr>
-<hr>
-<p><code>od</code> 命令</p>
-<hr>
+<p><code>sudo vi /etc/inittab</code><br></p>
+            <p class="article-more-link">
+                <a href="/2016/08/08/Use-Linux/#more">查看更多</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
 
-	
-	</div>
-  <a type="button" href="/2016/08/08/Use-Linux/#more" class="btn btn-default more">阅读此文</a>
+
+
 </div>
 
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2016-08-07 </div>
-			<div class="article-title"><a href="/2016/08/07/Use-Java/" >Use Java</a></div>						
-		</h3>
-	
+    <a data-url="http://yoursite.com/2016/08/08/Use-Linux/" data-id="ciro6h7mt000bqsjynw7vfojw" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2016/08/08/Use-Linux/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2016/08/08/Use-Linux/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
 
 
-			<div class="entry">
-  <div class="row">
-	
-	
-		<p>‘javac’ 不是内部或外部命令，也不是可运行的程序<br>或批处理文件。</p>
 
-	
-	</div>
-  <a type="button" href="/2016/08/07/Use-Java/#more" class="btn btn-default more">阅读此文</a>
+    <article id="post-Use-Java" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2016/08/07/Use-Java/">Use Java</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/08/07/Use-Java/">
+            <time datetime="2016-08-07T08:03:27.000Z" itemprop="datePublished">2016-08-07</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/programming/">编程</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Java/">Java</a>, <a class="tag-link" href="/tags/Use/">Use</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>‘javac’ 不是内部或外部命令，也不是可运行的程序<br>或批处理文件。</p></p>
+            <p class="article-more-link">
+                <a href="/2016/08/07/Use-Java/#more">查看更多</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
 </div>
 
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2016-08-06 </div>
-			<div class="article-title"><a href="/2016/08/06/Use-Vim/" >Use-Vim</a></div>						
-		</h3>
-	
+    <a data-url="http://yoursite.com/2016/08/07/Use-Java/" data-id="ciro6h7m30006qsjya99a0jax" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2016/08/07/Use-Java/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2016/08/07/Use-Java/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
 
 
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h1 id="vim-使用"><a href="#vim-使用" class="headerlink" title="vim 使用"></a>vim 使用</h1><hr>
-<h2 id="删除文件中所有的空行"><a href="#删除文件中所有的空行" class="headerlink" title="删除文件中所有的空行 :"></a>删除文件中所有的空行 :</h2><p><code>:g/^$/d</code></p>
-<p><a href="http://bbs.chinaunix.net/thread-510754-1-1.html" target="_blank" rel="external">如何在vim中删除空行-Shell-ChinaUnix.net</a></p>
-<hr>
-<h2 id="整行移动"><a href="#整行移动" class="headerlink" title="整行移动 :"></a>整行移动 :</h2><ul>
-<li>移动到下一行开头<br><code>+</code></li>
-<li>移动到上一行开头<br><code>-</code></li>
-<li>移动到行首<br><code>0</code></li>
-<li>移动到行尾<br><code>$</code></li>
-</ul>
-<hr>
-<h2 id="符号"><a href="#符号" class="headerlink" title="符号 . :"></a>符号 <code>.</code> :</h2><ul>
-<li>重复命令</li>
-<li>当前行<br><code>.-1</code> 代表当前行的上一行</li>
-</ul>
-<hr>
-<h2 id="MiniBufExplorer"><a href="#MiniBufExplorer" class="headerlink" title="MiniBufExplorer"></a>MiniBufExplorer</h2><p>MiniBufExplorer 是什麽？<br>MiniBufExplorer 安装<br>MiniBufExplorer 使用</p>
-<h3 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h3><ul>
-<li><a href="https://github.com/fholgado/minibufexpl.vim" target="_blank" rel="external">fholgado/minibufexpl.vim: Elegant buffer explorer - takes very little screen space</a></li>
-<li><a href="https://bbs.sjtu.edu.cn/bbsanc,path,%2Fgroups%2FGROUP_3%2FGNULinux%2FSoftware%2FD95E89182%2FD5277E56B%2FA96F89F1C.html" target="_blank" rel="external">快速浏览和操作Buffer – 插件: MiniBufExplorer</a></li>
-</ul>
-<hr>
-<h2 id="buffer-的使用"><a href="#buffer-的使用" class="headerlink" title="buffer 的使用:"></a><strong><em>buffer 的使用:</em></strong></h2><ul>
-<li>下一个 buffer<br><code>:bn</code></li>
-<li>上一个 buffer<br><code>:bp</code></li>
-<li>打开名称为 filename 的文件<br><code>:e&lt;filename&gt;</code></li>
-<li>显示当前打开的 buffer<br><code>:ls</code></li>
-<li>n 为数字，打开第 n 个buffer<br><code>:b&lt;n&gt;</code></li>
-<li>自动补全<br><code>:b&lt;tab&gt;</code></li>
-<li>删除 buffer<br><code>:bd</code></li>
-</ul>
-<hr>
-<h2 id="进制操作"><a href="#进制操作" class="headerlink" title="进制操作:"></a>进制操作:</h2><ul>
-<li>正常打开文件，默认添加一个换行行<br><code>vim filename</code></li>
-<li>以二进制打开文件<br><code>vim -b filename</code></li>
-<li>进入 16 进制查看编辑模式,如果在这个模式下执行 <code>:wq</code> 命令会把文件直接保存成这个界面(会把当前界面都保存成字符)<br><code>:%xxd</code></li>
-<li>修改 16 进制内容后 回到普通模式，可以看到修改产生的变化，这时执行 <code>:wq</code> 不会保存到 16 进制的模式<br><code>:%xxd -r</code></li>
-</ul>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">eg:(Linux 下操作)</div><div class="line">echo -<span class="keyword">n</span> <span class="string">"test"</span> &gt; <span class="keyword">test</span>.bin</div><div class="line"><span class="keyword">cat</span> <span class="keyword">test</span>.bin</div><div class="line">vim -b <span class="keyword">test</span>.bin</div><div class="line">:%!xxd</div><div class="line">vim <span class="keyword">test</span>.bin</div><div class="line">:%!xxd</div><div class="line">0x0a</div><div class="line">vim -b <span class="keyword">test</span>.bin</div><div class="line">:%!xxd</div><div class="line"><span class="comment">// 修改 </span></div><div class="line">:%!xxd -<span class="built_in">r</span></div><div class="line">:wq</div></pre></td></tr></table></figure>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考:"></a>参考:</h3><p><a href="http://www.cnblogs.com/killkill/archive/2010/06/23/1763785.html" target="_blank" rel="external">在Linux下使用vim配合xxd查看并编辑二进制文件 - killkill - 博客园</a><br><a href="http://www.cnblogs.com/Jason-Damon/archive/2013/05/04/3059343.html" target="_blank" rel="external">linux下用vim实现ultraEdit的功能 - Jason Damon - 博客园</a></p>
-<hr>
-<h2 id="q1-q"><a href="#q1-q" class="headerlink" title=":q1 = :q!"></a><code>:q1</code> = <code>:q!</code></h2><hr>
-<h2 id="Vim-帮助文件的跳转"><a href="#Vim-帮助文件的跳转" class="headerlink" title="Vim 帮助文件的跳转"></a>Vim 帮助文件的跳转</h2><ul>
-<li>Jump to a subject:<br>Position the cursor on a tag (e.g. |bars|) and hit <code>CTRL-]</code>.</li>
-<li>With the mouse:<br>“:set mouse=a” to enable the mouse (in xterm or GUI).  <code>Double-click</code> the left mouse button on a tag, e.g. |bars|.</li>
-<li>Jump back:<br>Type <code>CTRL-T</code> or <code>CTRL-O</code> (repeat to go further back).</li>
-</ul>
-<hr>
-<h2 id="Vim-使用-find命令打开文件"><a href="#Vim-使用-find命令打开文件" class="headerlink" title="Vim 使用:find命令打开文件"></a>Vim 使用<code>:find</code>命令打开文件</h2><p>使用：<br>搜索打开文件 filename：<br><figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:<span class="built_in">find</span> filename</div></pre></td></tr></table></figure></p>
-<p>提示：<br>使用前需要配置<code>path</code>变量,添加以下语句到 <code>.vimrc</code>文件以可以搜索打开以下文件夹中的文件:<br><code>D:\OneDrive\VIM</code><br><code>D:\Proram Files (x86)\hexo\source\_posts</code><br><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">:set path+=.,D:\OneDrive\VIM/*</span></div><div class="line"># 对包含空格文件夹的特殊处理：</div><div class="line"><span class="meta">:set path+=.,D:\Proram\\\</span> Files\\\ (x86)\hexo\source\<span class="emphasis">_posts</span></div></pre></td></tr></table></figure></p>
-<h3 id="参考-1"><a href="#参考-1" class="headerlink" title="参考:"></a>参考:</h3><ul>
-<li>《Vim 实用技巧》技巧42 使用<code>:find</code>命令打开文件</li>
-<li><a href="http://blog.csdn.net/neosmith/article/details/17308119" target="_blank" rel="external">使用vim的find命令快速打开文件 - 王鸿飞的专栏 - 博客频道 - CSDN.NET</a></li>
-<li>官方文档 :help path</li>
-</ul>
-<hr>
-<hr>
-<h2 id="Vim-重复上一个宏命令："><a href="#Vim-重复上一个宏命令：" class="headerlink" title="Vim 重复上一个宏命令："></a>Vim 重复上一个宏命令：</h2><p>@：</p>
-<h3 id="参考：-1"><a href="#参考：-1" class="headerlink" title="参考："></a>参考：</h3><ul>
-<li>《Vim 实用技巧》技巧31 重复上次的 Ex 命令</li>
-</ul>
-<hr>
 
-	
-	</div>
-  <a type="button" href="/2016/08/06/Use-Vim/#more" class="btn btn-default more">阅读此文</a>
+    <article id="post-Use-Vim" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2016/08/06/Use-Vim/">Use-Vim</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/08/06/Use-Vim/">
+            <time datetime="2016-08-06T11:59:45.000Z" itemprop="datePublished">2016-08-06</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Use/">Use</a>, <a class="tag-link" href="/tags/Vim/">Vim</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><h1 id="vim-使用"><a href="#vim-使用" class="headerlink" title="vim 使用"></a>vim 使用</h1><hr>
+<h2 id="删除文件中所有的空行"><a href="#删除文件中所有的空行" class="headerlink" title="删除文件中所有的空行 :"></a>删除文件中所有的空行 :</h2><p><code>:g/^$/d</code></p></p>
+            <p class="article-more-link">
+                <a href="/2016/08/06/Use-Vim/#more">查看更多</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
 </div>
 
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2016-08-05 </div>
-			<div class="article-title"><a href="/2016/08/05/Use-Hexo/" >Use Hexo</a></div>						
-		</h3>
-	
+    <a data-url="http://yoursite.com/2016/08/06/Use-Vim/" data-id="ciro6h7nb000jqsjyr9zc69r5" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2016/08/06/Use-Vim/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2016/08/06/Use-Vim/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
 
 
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h1 id="commands"><a href="#commands" class="headerlink" title="commands"></a>commands</h1><ul>
+
+    <article id="post-Use-Hexo" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2016/08/05/Use-Hexo/">Use Hexo</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/08/05/Use-Hexo/">
+            <time datetime="2016-08-05T10:12:39.000Z" itemprop="datePublished">2016-08-05</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Hexo/">Hexo</a>, <a class="tag-link" href="/tags/Use/">Use</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><h1 id="commands"><a href="#commands" class="headerlink" title="commands"></a>commands</h1><ul>
 <li>hexo d</li>
 <li>hexo g</li>
 <li>hexo clean</li>
 <li>hexo n “tit le”</li>
-<li>hexo s<br><a href="http://localhost:4000/," target="_blank" rel="external"> 预览地址 </a></li>
-<li>hexo v<br>  hexo: 3.2.2<br>  hexo-cli: 1.0.2<br>  os: Windows_NT 10.0.14393 win32 x64<br>  http_parser: 2.6.0<br>  node: 5.1.0<br>  v8: 4.6.85.31<br>  uv: 1.7.5<br>  zlib: 1.2.8<br>  ares: 1.10.1-DEV<br>  icu: 56.1<br>  modules: 47<br>  openssl: 1.0.2d</li>
-</ul>
-<p>hexo clean &amp;&amp; hexo s<br>hexo clean &amp;&amp; hexo d</p>
-<h2 id="markdown"><a href="#markdown" class="headerlink" title="markdown"></a>markdown</h2><h3 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">这里是代码块</div></pre></td></tr></table></figure>
-<p><a href="https://github.com/hexojs/hexo/issues/587" target="_blank" rel="external">Markdown代码块中的Markdown语法 · Issue #587 · hexojs/hexo</a></p>
-<h3 id="图片显示"><a href="#图片显示" class="headerlink" title="图片显示"></a>图片显示</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">![<span class="string">“图片描述”（可以不写）</span>](<span class="link">“图片地址”</span>)</div><div class="line"></div><div class="line">![<span class="string">0808</span>](<span class="link">http://obkpw0khh.bkt.clouddn.com/2016-08-08.png</span>)</div></pre></td></tr></table></figure>
-<hr>
-<hr>
-<p>hexo 对一篇文章添加多个标签<br><code>tags: [aaa, bbb]</code><br><figure class="highlight haml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">tags:</div><div class="line">-<span class="ruby"> foo</span></div><div class="line">-<span class="ruby"> bar</span></div></pre></td></tr></table></figure></p>
-<h2 id="请问如何对一篇文章增加多个标签，应该使用什么分隔符？-·-Issue-351-·-hexojs-hexo"><a href="#请问如何对一篇文章增加多个标签，应该使用什么分隔符？-·-Issue-351-·-hexojs-hexo" class="headerlink" title="请问如何对一篇文章增加多个标签，应该使用什么分隔符？ · Issue #351 · hexojs/hexo"></a><a href="https://github.com/hexojs/hexo/issues/351" target="_blank" rel="external">请问如何对一篇文章增加多个标签，应该使用什么分隔符？ · Issue #351 · hexojs/hexo</a></h2><hr>
-<p>Hexo 中 tag，categories 的使用</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考:"></a>参考:</h2><h2 id="Hexo使用攻略：（四）Hexo的分类和标签设置-GoonX"><a href="#Hexo使用攻略：（四）Hexo的分类和标签设置-GoonX" class="headerlink" title="- Hexo使用攻略：（四）Hexo的分类和标签设置 | { GoonX }"></a>- <a href="http://ijiaober.github.io/2014/08/05/hexo/hexo-04/" target="_blank" rel="external">Hexo使用攻略：（四）Hexo的分类和标签设置 | { GoonX }</a></h2><h1 id="Link"><a href="#Link" class="headerlink" title="Link"></a>Link</h1><ul>
-<li><a href="https://hexo.io/zh-cn/docs/commands.html" target="_blank" rel="external">指令 | Hexo</a></li>
-<li><a href="http://moxfive.xyz/2015/12/21/common-hexo-commands/" target="_blank" rel="external">Hexo 最常用的几个命令 | MOxFIVE’s Blog</a></li>
-</ul>
+<li>hexo s</p>
+            <p class="article-more-link">
+                <a href="/2016/08/05/Use-Hexo/#more">查看更多</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
 
-	
-	</div>
-  <a type="button" href="/2016/08/05/Use-Hexo/#more" class="btn btn-default more">阅读此文</a>
+
+
 </div>
 
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2016-08-05 </div>
-			<div class="article-title"><a href="/2016/08/05/Use-WireShark/" >Use WireShark</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="Wireshark-过滤规则"><a href="#Wireshark-过滤规则" class="headerlink" title="Wireshark 过滤规则"></a>Wireshark 过滤规则</h2><h3 id="显示http状态码为200的数据包"><a href="#显示http状态码为200的数据包" class="headerlink" title="显示http状态码为200的数据包"></a>显示<code>http</code>状态码为<code>200</code>的数据包</h3><ul>
-<li><code>http.response.code==200</code></li>
-</ul>
-
-	
-	</div>
-  <a type="button" href="/2016/08/05/Use-WireShark/#more" class="btn btn-default more">阅读此文</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2016-08-05 </div>
-			<div class="article-title"><a href="/2016/08/05/hello-world/" >Hello World</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-	
-	</div>
-  <a type="button" href="/2016/08/05/hello-world/#more" class="btn btn-default more">阅读此文</a>
-</div>
-
-		
-
-		</div>
-
-		<!-- pagination -->
-		<div>
-  		<center>
-		<div class="pagination">
-<ul class="pagination">
-	 
-</ul>
-</div>
-
-  		</center>
-		</div>
-
-		
-		
-	</div> <!-- col-md-9 -->
-
-	
-		<div class="col-md-3">
-	<div id="sidebar">
-	
-			
-  <div id="site_search">
-   <div class="form-group">
-    <input type="text" id="local-search-input" name="q" results="0" placeholder="搜索" class="st-search-input st-default-search-input form-control"/>
-   </div>  
-  <div id="local-search-result"></div>
-  </div>
-
-
-		
-			
-	<div class="widget">
-		<h4>分类</h4>
-		<ul class="tag_box inline list-unstyled">
-		
-			<li><a href="/categories/programming/">编程<span>1</span></a></li>
-		
-		</ul>
-	</div>
-
-		
-			
-	<div class="widget">
-		<h4>标签云</h4>
-		<ul class="tag_box inline list-unstyled">		
-		
-			<li><a href="/tags/Git/">Git<span>1</span></a></li>
-		
-			<li><a href="/tags/cmd/">cmd<span>1</span></a></li>
-		
-			<li><a href="/tags/Use/">Use<span>3</span></a></li>
-		
-			<li><a href="/tags/Wireshark/">Wireshark<span>1</span></a></li>
-		
-			<li><a href="/tags/Linux/">Linux<span>1</span></a></li>
-		
-			<li><a href="/tags/Chrome/">Chrome<span>1</span></a></li>
-		
-			<li><a href="/tags/vim/">vim<span>1</span></a></li>
-		
-			<li><a href="/tags/Java/">Java<span>1</span></a></li>
-		
-			<li><a href="/tags/Hexo/">Hexo<span>2</span></a></li>
-		
-		 
-		</ul>
-	</div>
-
-
-		
-			
-<div class="widget">
-  <h4>最新文章</h4>
-  <ul class="entry list-unstyled">
-    
-      <li>
-        <a href="/2016/08/08/Use-Git/" ><i class="fa fa-file-o"></i>Use Git</a>
-      </li>
-    
-      <li>
-        <a href="/2016/08/08/Use-CMD/" ><i class="fa fa-file-o"></i>Use CMD</a>
-      </li>
-    
-      <li>
-        <a href="/2016/08/08/Use-Chrome/" ><i class="fa fa-file-o"></i>Use Chrome</a>
-      </li>
-    
-      <li>
-        <a href="/2016/08/08/The-Day/" ><i class="fa fa-file-o"></i>The day</a>
-      </li>
-    
-      <li>
-        <a href="/2016/08/08/Use-Linux/" ><i class="fa fa-file-o"></i>Use Linux</a>
-      </li>
-    
-  </ul>
-</div>
-
-		
-			
-<div class="widget">
-	<h4>链接</h4>
-	<ul class="blogroll list-unstyled">
-	
-		<li><i class="fa fa-github"></i><a href="http://www.github.com/sqsgalaxys" title="My Github account." target="_blank"]);">Github</a></li>
-	
-	</ul>
-</div>
-
-
-		
-	</div> <!-- sidebar -->
-</div> <!-- col-md-3 -->
-
-	
-	
-</div> <!-- row-fluid -->
-
-	</div>
-  </div>
-  <div class="container-narrow">
-  <footer> <p>
-  &copy; 2016 sqsgalaxys
-  
-      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
-</p> </footer>
-</div> <!-- container-narrow -->
-  
-
-
-  
-<a id="gotop" href="#">   
-  <span>▲</span> 
-</a>
-
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
-<script src="/js/bootstrap.min.js"></script>
-<script src="/js/main.js"></script>
-<script src="/js/search.js"></script> 
-
-
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
-</script>
-
-
-
+    <a data-url="http://yoursite.com/2016/08/05/Use-Hexo/" data-id="ciro6h7my000eqsjykeo7mt4o" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
 
-  ga('create', 'UA-76189459-1', 'auto');
-  ga('send', 'pageview');
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
 
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
 </script>
 
+            
+    
+        <a href="http://yoursite.com/2016/08/05/Use-Hexo/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2016/08/05/Use-Hexo/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-Use-WireShark" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2016/08/05/Use-WireShark/">Use WireShark</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/08/05/Use-WireShark/">
+            <time datetime="2016-08-05T10:02:21.000Z" itemprop="datePublished">2016-08-05</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Use/">Use</a>, <a class="tag-link" href="/tags/Wireshark/">Wireshark</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><h2 id="Wireshark-过滤规则"><a href="#Wireshark-过滤规则" class="headerlink" title="Wireshark 过滤规则"></a>Wireshark 过滤规则</h2><h3 id="显示http状态码为200的数据包"><a href="#显示http状态码为200的数据包" class="headerlink" title="显示http状态码为200的数据包"></a>显示<code>http</code>状态码为<code>200</code>的数据包</h3><ul>
+<li><code>http.response.code==200</code></li>
+</ul></p>
+            <p class="article-more-link">
+                <a href="/2016/08/05/Use-WireShark/#more">查看更多</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2016/08/05/Use-WireShark/" data-id="ciro6h7mp000aqsjypxpqlqtr" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2016/08/05/Use-WireShark/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2016/08/05/Use-WireShark/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <nav id="page-nav">
+        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
+    </nav>
+</section>
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">编程</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">11</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CMD/">CMD</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/">Chrome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Use/">Use</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wireshark/">Wireshark</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/CMD/" style="font-size: 10px;">CMD</a> <a href="/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Use/" style="font-size: 20px;">Use</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/Wireshark/" style="font-size: 10px;">Wireshark</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2016 sqsgalaxys<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_config = function () {
+        
+        this.page.identifier = 'undefined';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'hexo-theme-icarus' + '.disqus.com/count.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+
+
+    
+        <script src="/vendor/fancybox/jquery.fancybox.pack.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
 </body>
-   </html>
+</html>
