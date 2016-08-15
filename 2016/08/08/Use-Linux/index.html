@@ -13,7 +13,7 @@ sudo vi /etc/inittab">
 <meta property="og:site_name" content="sqsgalaxys'Blog">
 <meta property="og:description" content="Linux 启动设置:
 sudo vi /etc/inittab">
-<meta property="og:updated_time" content="2016-08-11T09:58:43.713Z">
+<meta property="og:updated_time" content="2016-08-11T11:34:48.326Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Use Linux">
 <meta name="twitter:description" content="Linux 启动设置:
@@ -156,11 +156,11 @@ sudo vi /etc/inittab">
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                13
+                18
                 <span>文章</span>
             </div>
             <div class="article-info-block">
-                10
+                11
                 <span>标签</span>
             </div>
         </div>
@@ -263,11 +263,15 @@ sudo vi /etc/inittab">
 <p><code>chkconfig</code> 命令<br>‘chkconfig –list’</p>
 <hr>
 <hr>
-<h2 id="安装配置-ftp"><a href="#安装配置-ftp" class="headerlink" title="安装配置 ftp"></a>安装配置 ftp</h2><p>下载<br>配置<br>    服务配置<br>    用户配置<br>启动</p>
+<h2 id="安装配置-ftp"><a href="#安装配置-ftp" class="headerlink" title="安装配置 ftp"></a>安装配置 ftp</h2><p>下载安装<br><code>yum -y install vsftpd</code><br><code>chkconfig --level 2345 vsftpd on</code><br><code>touch /var/log/vsftpd.log</code><br><code>vi /etc/vsftpd/vsftpd.conf</code><br><figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">`local_enable=YES`</div><div class="line">`anonymous_enable=NO`</div></pre></td></tr></table></figure></p>
+<p><code>adduser -d / -g ftp -s /sbin/nologin sqsgalaxys</code><br><code>passwd sqsgalaxys</code></p>
+<p>配置<br>    服务配置<br>    用户配置<br>启动</p>
 <h2 id="安装配置-ftp-1"><a href="#安装配置-ftp-1" class="headerlink" title="安装配置 ftp"></a>安装配置 ftp</h2><p>// 安装 vsftpd<br><code>yum -y install vsftpd</code><br>// 创建日志文件<br><code>touch /var/log/vsftpd.log</code><br>// 查看 vsftpd 服务启动情况</p>
 <p><code>chkconfig --list</code></p>
 <figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">[root@localhost]~<span class="comment"># chkconfig --list|grep ftp</span></div><div class="line">vsftpd         	<span class="number">0</span>:<span class="literal">off</span>	<span class="number">1</span>:<span class="literal">off</span>	<span class="number">2</span>:<span class="literal">off</span>	<span class="number">3</span>:<span class="literal">off</span>	<span class="number">4</span>:<span class="literal">off</span>	<span class="number">5</span>:<span class="literal">off</span>	<span class="number">6</span>:<span class="literal">off</span></div><div class="line">[root@localhost]~<span class="comment">#</span></div></pre></td></tr></table></figure>
 <p>// 配置服务器开机自动启动 ftp 服务<br><code>chkconfig --level 2345 vsftpd on</code><br>// 启动 ftp 服务<br><code>service vsftpd start</code><br>// 查看 ftp 服务状态<br><code>service vsftpd status</code><br>// 重启 ftp 服务<br><code>service vsftpd restart</code><br>// 关闭 ftp 服务<br><code>service vsftpd stop</code><br>// 编辑 vsftpd 配置文件<br><code>vi /etc/vsftpd/vsftpd.conf</code><br>// 不允许匿名访问<br><code>anonymous_enable=NO</code><br>// 设定可以本地用户访问 ?虚拟宿主用户,虚拟用户<br><code>local_enable=YES</code><br>// 使用户不能离开主目录 配合<code>/etc/vsftpd/chroot_list</code>使用<br><code>chroot_list_enable=YES</code><br>// 设定 vsftpd 的服务日志保存路径<br><code>xferlog_file=/var/log/vsftpd.log</code><br>// 允许使用 ASCII 模式上传<br><code>ascii_upload_enable=YES</code><br>// 设定支持 ASCII 模式的上传和下载功能<br><code>ascii_download_enable=YES</code><br>// PAM 认证文件名 PAM 根据<code>/etc/pam.d/vsftpd</code>进行认证<br><code>pam_service_name=vsftpd</code></p>
+<p>// 添加用户<br>adduser -d / -g ftp -s /sbin/nologin sqsgalaxys<br>// 设置密码<br>passwd sqsgalaxys<br>// 权限设置?<br>chown -R sqsgalaxys:ftp/tmp/sqsgalaxys</p>
+<p>㕜<br>// 查看进程?<br>ps -ef | grep ftp<br>chkconfig –list<br>chkconfig –list|grep ftp<br>yum -y install vsftpd<br>chkconfig –level 2345 vsftpd on<br>chkconfig –list|grep ftp<br>chkconfig –list|grep tomcat<br>service vsftpd status<br>vi /etc/vsftpd/vsftpd.conf<br>adduser -d / -g ftp -s /sbin/nologin sqsgalaxys<br>adduser -d /tmp -g ftp -s /sbin/nologin sqsgalaxys<br>passwd sqsgalaxys<br>chown -R sqsgalaxys:ftp/<br>chown -R sqsgalaxys:ftp/tmp<br>chown -R sqsgalaxys:ftp/tmp/sqsgalaxys<br>service vsftpd restart<br>vi /etc/vsftpd/vsftpd.conf<br>service vsftpd restart</p>
 <p>Note:<br><code>chroot</code>:限制所列的ftp用户只能访问其被指定的<code>Home</code>目录<br>参考:</p>
 <ul>
 <li><a href="http://www.bkjia.com/Linuxjc/1009970.html" target="_blank" rel="external">（一）Linux环境部署(Centos+Nginx+Tomcat+Mysql)-FTP安装_Linux教程 | 帮客之家</a></li>
@@ -283,7 +287,7 @@ sudo vi /etc/inittab">
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/08/08/Use-Linux/" data-id="cirq6n4fl000cocjy7s12p00r" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2016/08/08/Use-Linux/" data-id="cirvck56k000fv0jy02unp58h" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -398,19 +402,12 @@ sudo vi /etc/inittab">
                 <aside id="sidebar">
    
         
-    <div class="widget-wrap">
-        <h3 class="widget-title">分类</h3>
-        <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">编程</a><span class="category-list-count">1</span></li></ul>
-        </div>
-    </div>
-
     
         
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">13</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">18</span></li></ul>
         </div>
     </div>
 
@@ -419,7 +416,7 @@ sudo vi /etc/inittab">
     <div class="widget-wrap">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CMD/">CMD</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/">Chrome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Use/">Use</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wireshark/">Wireshark</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/list/">list</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CMD/">CMD</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/">Chrome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Use/">Use</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wireshark/">Wireshark</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/list/">list</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -428,7 +425,7 @@ sudo vi /etc/inittab">
     <div class="widget-wrap">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/CMD/" style="font-size: 10px;">CMD</a> <a href="/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Use/" style="font-size: 20px;">Use</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/Wireshark/" style="font-size: 10px;">Wireshark</a> <a href="/tags/list/" style="font-size: 10px;">list</a>
+            <a href="/tags/CMD/" style="font-size: 10px;">CMD</a> <a href="/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Use/" style="font-size: 20px;">Use</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/Wireshark/" style="font-size: 10px;">Wireshark</a> <a href="/tags/list/" style="font-size: 10px;">list</a>
         </div>
     </div>
 
