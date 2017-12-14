@@ -3,18 +3,17 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Use Java | sqsgalaxys&#39;Blog</title>
+    <title>归档: 2017/12 | sqsgalaxys&#39;Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="‘javac’ 不是内部或外部命令，也不是可运行的程序或批处理文件。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Use Java">
-<meta property="og:url" content="http://yoursite.com/2016/08/07/Use-Java/index.html">
+    <meta name="description" content="Note">
+<meta property="og:type" content="website">
+<meta property="og:title" content="sqsgalaxys'Blog">
+<meta property="og:url" content="http://yoursite.com/archives/2017/12/index.html">
 <meta property="og:site_name" content="sqsgalaxys'Blog">
-<meta property="og:description" content="‘javac’ 不是内部或外部命令，也不是可运行的程序或批处理文件。">
-<meta property="og:updated_time" content="2016-08-15T01:54:17.000Z">
+<meta property="og:description" content="Note">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Use Java">
-<meta name="twitter:description" content="‘javac’ 不是内部或外部命令，也不是可运行的程序或批处理文件。">
+<meta name="twitter:title" content="sqsgalaxys'Blog">
+<meta name="twitter:description" content="Note">
     
 
     
@@ -205,183 +204,40 @@
 </aside>
 
             
-            <section id="main"><article id="post-Use-Java" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
+            <section id="main"><div class="timeline timeline-wrap">
+    
+            <div class="timeline-row timeline-row-major">
+                <span class="node"><i class="fa fa-calendar"></i></span>
+                <h1 class="title">2017</h1>
+            </div>
         
-        
-        
-            <header class="article-header">
+        <div class="timeline-row">
+            <span class="node"></span>
+            <div class="content">
                 
     
-        <h1 class="article-title" itemprop="name">
-            Use Java
+        <h1 itemprop="name">
+            <a class="timeline-article-title" href="/2017/12/14/test2017-12-14-14-16-09/">test2017-12-14 14:16:09</a>
         </h1>
     
 
-                
-                    <div class="article-meta">
-                        
+                <div class="article-meta">
+                    
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2016/08/07/Use-Java/">
-            <time datetime="2016-08-07T08:03:27.000Z" itemprop="datePublished">2016-08-07</time>
+        <a href="/2017/12/14/test2017-12-14-14-16-09/">
+            <time datetime="2017-12-14T06:16:15.000Z" itemprop="datePublished">2017-12-14</time>
         </a>
     </div>
 
 
-                        
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Java/">Java</a>, <a class="tag-link" href="/tags/Use/">Use</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <p>‘javac’ 不是内部或外部命令，也不是可运行的程序<br>或批处理文件。</p>
-<a id="more"></a>
-<h2 id="Java-获得内存信息或操作内存的接口"><a href="#Java-获得内存信息或操作内存的接口" class="headerlink" title="Java 获得内存信息或操作内存的接口"></a>Java 获得内存信息或操作内存的接口</h2><p>// 虚拟机内存系统接口<br><code>MemoryMXBean</code></p>
-<p>// 虚拟机内存管理器接口<br><code>MemoryManagerMXBean</code></p>
-<p>// 虚拟机中的内存池接口<br><code>MemoryPoolMXBean</code></p>
-<p>// 操作系统信息接口<br><code>OperatingSystemMXBean</code></p>
-<hr>
-<h2 id="java-数据库相关的一些类"><a href="#java-数据库相关的一些类" class="headerlink" title="java 数据库相关的一些类"></a>java 数据库相关的一些类</h2><figure class="highlight pony"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="type">DbProc</span> dbobj = <span class="function"><span class="keyword">new</span> <span class="title">DbProc</span>();</span></div><div class="line"><span class="title">Connection</span> <span class="title">conn</span> = <span class="title">dbobj</span>.<span class="title">connect</span>();</div><div class="line"><span class="title">Statement</span> <span class="title">stm</span> = <span class="title">conn</span>.<span class="title">createStatement</span>();</div><div class="line"><span class="title">ResultSet</span> <span class="title">rst</span> = <span class="title">stm</span>.<span class="title">executeQuery</span>(strSQL);</div></pre></td></tr></table></figure>
-<hr>
-<h2 id="java-文件位置的输入"><a href="#java-文件位置的输入" class="headerlink" title="java 文件位置的输入"></a>java 文件位置的输入</h2><figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">File</span> f=<span class="keyword">new</span> <span class="built_in">File</span>(<span class="string">"d:\\txdjava\\java12.txt"</span>);</div><div class="line"><span class="built_in">File</span> f=<span class="keyword">new</span> <span class="built_in">File</span>(<span class="string">"d:/txdjava/java12.txt"</span>);</div></pre></td></tr></table></figure>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考:"></a>参考:</h3><h2 id="java-中文件路径的表示-ohuan的日志-网易博客"><a href="#java-中文件路径的表示-ohuan的日志-网易博客" class="headerlink" title="- java 中文件路径的表示 - ohuan的日志 - 网易博客"></a>- <a href="http://hbohuan.blog.163.com/blog/static/2084898200763132748377/" target="_blank" rel="external">java 中文件路径的表示 - ohuan的日志 - 网易博客</a></h2><hr>
-<h2 id="java-与-xml-文件"><a href="#java-与-xml-文件" class="headerlink" title="java 与 xml 文件"></a>java 与 xml 文件</h2><hr>
-<hr>
-<h2 id="java-官方文档"><a href="#java-官方文档" class="headerlink" title="java 官方文档"></a>java 官方文档</h2><ul>
-<li><a href="http://docs.oracle.com/javase/tutorial/" target="_blank" rel="external">The Java™ Tutorials</a></li>
-<li><a href="http://docs.oracle.com/javase/specs/jls/se8/html/index.html" target="_blank" rel="external">The Java® Language Specification</a></li>
-<li><a href="http://docs.oracle.com/javase/8/docs/api/index.html" target="_blank" rel="external">Overview (Java Platform SE 8 )</a><h3 id="参考-1"><a href="#参考-1" class="headerlink" title="参考:"></a>参考:</h3><a href="http://gold.xitu.io/post/57ab4bd32e958a0066cf7041" target="_blank" rel="external">技术的正宗与野路子 - 张铁蕾 - 掘金专栏</a></li>
-</ul>
-<hr>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://yoursite.com/2016/08/07/Use-Java/" data-id="cjb63f835000lz87pz0jdgcsr" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://yoursite.com/2016/08/07/Use-Java/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2016/08/07/Use-Java/">评论</a>
-    
-
-        </footer>
-    </div>
-    
-        
-<nav id="article-nav">
-    
-        <a href="/2016/08/08/Use-Linux/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">上一篇</strong>
-            <div class="article-nav-title">
-                
-                    Use Linux
-                
+                    
+                    
+                </div>
             </div>
-        </a>
+        </div>
     
-    
-        <a href="/2016/08/06/Use-Vim/" id="article-nav-older" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">下一篇</strong>
-            <div class="article-nav-title">Use-Vim</div>
-        </a>
-    
-</nav>
-
-
-    
-</article>
-
-
-    
-    <section id="comments">
-    
-        
-    <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
-
-    
-    </section>
-
+</div>
 </section>
             
                 <aside id="sidebar">
@@ -448,13 +304,11 @@
     <script>
     var disqus_config = function () {
         
-            this.page.url = 'http://yoursite.com/2016/08/07/Use-Java/';
-        
-        this.page.identifier = 'Use-Java';
+        this.page.identifier = 'undefined';
     };
     (function() { 
         var d = document, s = d.createElement('script');  
-        s.src = '//' + 'hexo-theme-icarus' + '.disqus.com/embed.js';
+        s.src = '//' + 'hexo-theme-icarus' + '.disqus.com/count.js';
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
     })();
