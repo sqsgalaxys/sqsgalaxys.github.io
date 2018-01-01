@@ -1,0 +1,21 @@
+language: node_js
+sudo: required
+node_js:
+  - 5.4.0
+cache:
+  directories:
+    - node_modules
+before_script:
+  - git clone --branch master https://github.com/sqsgalaxys/sqsgalaxys.github.io.git public
+script:
+  - npm run build
+after_success:
+  - cd public
+  - git config user.name "sqsgalaxys"
+  - git config user.email "sqsgalaxys@gmail.com"
+  - git add --all .
+  - git commit -m "travis ci auto build"
+  - git push https://$Personal_access_tokens@github.com/sqsgalaxys/sqsgalaxys.github.io.git master
+branches:
+  only:
+    - hexo
