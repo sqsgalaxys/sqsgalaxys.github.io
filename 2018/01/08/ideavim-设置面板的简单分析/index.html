@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>ideavim 设置面板的简单分析 | sqsgalaxys&#39;Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="The cause of this本来想写一篇 ideavim 设置中 vim 的快捷键与 idea 本身快捷键的对比,但是经过搜索发现已经有一片类似的博客了:JetBrains IDE Vim 模式的方案 | I sudo X(这篇博客貌似有个彩蛋:点击页脚眼睛标志旁边的数字)注意到设置面板中的 “Shortcut Conflicts for Active Keymap”,(活动的Keymap">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ideavim 设置面板的简单分析">
+<meta property="og:url" content="http://yoursite.com/2018/01/08/ideavim-设置面板的简单分析/index.html">
+<meta property="og:site_name" content="sqsgalaxys&#39;Blog">
+<meta property="og:description" content="The cause of this本来想写一篇 ideavim 设置中 vim 的快捷键与 idea 本身快捷键的对比,但是经过搜索发现已经有一片类似的博客了:JetBrains IDE Vim 模式的方案 | I sudo X(这篇博客貌似有个彩蛋:点击页脚眼睛标志旁边的数字)注意到设置面板中的 “Shortcut Conflicts for Active Keymap”,(活动的Keymap">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fn8jcxhzpxj31401cx13r.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fn8hrga1kzj31kw0zggta.jpg">
+<meta property="og:updated_time" content="2018-01-07T17:08:26.271Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ideavim 设置面板的简单分析">
+<meta name="twitter:description" content="The cause of this本来想写一篇 ideavim 设置中 vim 的快捷键与 idea 本身快捷键的对比,但是经过搜索发现已经有一片类似的博客了:JetBrains IDE Vim 模式的方案 | I sudo X(这篇博客貌似有个彩蛋:点击页脚眼睛标志旁边的数字)注意到设置面板中的 “Shortcut Conflicts for Active Keymap”,(活动的Keymap">
+<meta name="twitter:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fn8jcxhzpxj31401cx13r.jpg">
+    
+
+    
+        <link rel="alternate" href="/" title="sqsgalaxys&#39;Blog" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">sqsgalaxys&#39;Blog</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.jpg" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.jpg" />
+            <h2 id="name">sqsgalaxys</h2>
+            <h3 id="title">Novice</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>China</span>
+            <a id="follow" target="_blank" href="https://github.com/sqsgalaxys/">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                34
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                14
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="http://github.com/sqsgalaxys/" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://twitter.com/GacktCamiu" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://www.facebook.com/gacktcamiu" target="_blank" title="facebook" class=tooltip>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://dribbble.com/sqsgalaxys" target="_blank" title="dribbble" class=tooltip>
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-ideavim-设置面板的简单分析" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            ideavim 设置面板的简单分析
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/01/08/ideavim-设置面板的简单分析/">
+            <time datetime="2018-01-08T01:05:11.000Z" itemprop="datePublished">2018-01-08</time>
+        </a>
+    </div>
+
+
+                        
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fn8jcxhzpxj31401cx13r.jpg" alt=""></p>
+<h2 id="The-cause-of-this"><a href="#The-cause-of-this" class="headerlink" title="The cause of this"></a>The cause of this</h2><p>本来想写一篇 ideavim 设置中 vim 的快捷键与 idea 本身快捷键的对比,但是经过搜索发现已经有一片类似的博客了:<br><a href="https://isudox.com/2016/07/26/scheme-of-ideavim-keymap/" title="0.0" target="_blank" rel="noopener">JetBrains IDE Vim 模式的方案 | I sudo X</a>(这篇博客貌似有个彩蛋:点击页脚眼睛标志旁边的数字)<br>注意到设置面板中的 “Shortcut Conflicts for Active Keymap”,(活动的Keymap的快捷冲突)<br>而且这篇博客中对比的快捷键和我 IntelliJ IDEA 中的 Vim Emulation 设置不太一样<br><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fn8hrga1kzj31kw0zggta.jpg" alt="我的 ideavim 设置面板"><br>所以猜想是不是这个 列表是不是根据快捷键的冲突动态生成的</p>
+<h2 id="研究过程"><a href="#研究过程" class="headerlink" title="研究过程:"></a>研究过程:</h2><h3 id="1-clone-代码-JetBrains-ideavim-Vim-emulation-plug-in-for-IDEs-based-on-the-IntelliJ-platform"><a href="#1-clone-代码-JetBrains-ideavim-Vim-emulation-plug-in-for-IDEs-based-on-the-IntelliJ-platform" class="headerlink" title="1. clone 代码: JetBrains/ideavim: Vim emulation plug-in for IDEs based on the IntelliJ platform."></a>1. clone <a href="https://github.com/JetBrains/ideavim.git" target="_blank" rel="noopener">代码</a>: <a href="https://github.com/JetBrains/ideavim" title="0.0" target="_blank" rel="noopener">JetBrains/ideavim: Vim emulation plug-in for IDEs based on the IntelliJ platform.</a></h3><h3 id="2-搜索字符串"><a href="#2-搜索字符串" class="headerlink" title="2. 搜索字符串"></a>2. 搜索字符串</h3><p>找到<code>VimEmulationConfigurable.java</code>文件中包含字符串<code>&quot;Shortcut Conflicts for Active Keymap&quot;</code>:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// com.maddyhome.idea.vim.ui.VimEmulationConfigurable.VimSettingsPanel</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">VimSettingsPanel</span> <span class="keyword">extends</span> <span class="title">JPanel</span> </span>&#123;</span><br><span class="line">  <span class="meta">@NotNull</span> <span class="keyword">private</span> <span class="keyword">final</span> VimShortcutConflictsTable myShortcutConflictsTable;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">VimSettingsPanel</span><span class="params">(@NotNull VimShortcutConflictsTable.Model model)</span> </span>&#123;</span><br><span class="line">    myShortcutConflictsTable = <span class="keyword">new</span> VimShortcutConflictsTable(model);</span><br><span class="line">    setLayout(<span class="keyword">new</span> BorderLayout());</span><br><span class="line">    <span class="keyword">final</span> JScrollPane scrollPane = <span class="keyword">new</span> JBScrollPane(myShortcutConflictsTable);</span><br><span class="line">    scrollPane.setBorder(<span class="keyword">new</span> LineBorder(UIUtil.getBorderColor()));</span><br><span class="line">    <span class="keyword">final</span> JPanel conflictsPanel = <span class="keyword">new</span> JPanel(<span class="keyword">new</span> BorderLayout());</span><br><span class="line">    <span class="keyword">final</span> String title = String.format(<span class="string">"Shortcut Conflicts for Active Keymap"</span>);</span><br><span class="line">    conflictsPanel.setBorder(IdeBorderFactory.createTitledBorder(title, <span class="keyword">false</span>));</span><br><span class="line">    conflictsPanel.add(scrollPane);</span><br><span class="line">    add(conflictsPanel, BorderLayout.CENTER);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>从中可以看到 <code>conflictsPanel</code>,<code>scrollPane</code>,<code>myShortcutConflictsTable</code> 几个面板的嵌套,最终添加:<br><code>myShortcutConflictsTable = new VimShortcutConflictsTable(model);</code><br>找到 <code>com.maddyhome.idea.vim.ui.VimEmulationConfigurable.VimShortcutConflictsTable#VimShortcutConflictsTable</code> 的声明:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">VimShortcutConflictsTable</span><span class="params">(@NotNull Model model)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">super</span>(model);</span><br><span class="line">  getTableColumn(Column.KEYSTROKE).setPreferredWidth(<span class="number">100</span>);</span><br><span class="line">  getTableColumn(Column.IDE_ACTION).setPreferredWidth(<span class="number">400</span>);</span><br><span class="line">  <span class="keyword">final</span> TableColumn ownerColumn = getTableColumn(Column.OWNER);</span><br><span class="line">  <span class="keyword">final</span> ComboBoxTableRenderer&lt;ShortcutOwner&gt; renderer = <span class="keyword">new</span> ShortcutOwnerRenderer();</span><br><span class="line">  ownerColumn.setPreferredWidth(<span class="number">150</span>);</span><br><span class="line">  ownerColumn.setCellRenderer(renderer);</span><br><span class="line">  ownerColumn.setCellEditor(renderer);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>跟着 renderer 找下去并没有发现什么有关对比快捷键冲突的地方,从<code>Model</code>发现<code>reset()</code>方法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Model</span> <span class="keyword">extends</span> <span class="title">AbstractTableModel</span> </span>&#123;</span><br><span class="line">  <span class="meta">@NotNull</span> <span class="keyword">private</span> <span class="keyword">final</span> List&lt;Row&gt; myRows = <span class="keyword">new</span> ArrayList&lt;Row&gt;();</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Model</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    reset();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// ....</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reset</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  myRows.clear();</span><br><span class="line">  <span class="keyword">for</span> (Map.Entry&lt;KeyStroke, ShortcutOwner&gt; entry : VimPlugin.getKey().getShortcutConflicts().entrySet()) &#123;</span><br><span class="line">    <span class="keyword">final</span> KeyStroke keyStroke = entry.getKey();</span><br><span class="line">    <span class="keyword">final</span> List&lt;AnAction&gt; actions = VimPlugin.getKey().getKeymapConflicts(keyStroke);</span><br><span class="line">    <span class="keyword">if</span> (!actions.isEmpty()) &#123;</span><br><span class="line">      myRows.add(<span class="keyword">new</span> Row(keyStroke, actions.get(<span class="number">0</span>), entry.getValue()));</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  Collections.sort(myRows);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里的 <code>reset()</code> 方法应该就是获取冲突的快捷键添加到设置面板的表格中的.<br>为什么方法名是<code>reset()</code> 呢?  </p>
+<hr>
+<p>从另一个角度来探索:  </p>
+<h2 id="idea-插件添加设置面板"><a href="#idea-插件添加设置面板" class="headerlink" title="idea 插件添加设置面板"></a>idea 插件添加设置面板</h2><h3 id="1-创建继承-Configurable-接口的类"><a href="#1-创建继承-Configurable-接口的类" class="headerlink" title="1. 创建继承 Configurable 接口的类"></a>1. 创建继承 Configurable 接口的类</h3><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">VimEmulationConfigurable</span> <span class="keyword">implements</span> <span class="title">Configurable</span> </span>&#123;</span><br></pre></td></tr></table></figure>
+<h3 id="2-重写方法"><a href="#2-重写方法" class="headerlink" title="2. 重写方法"></a>2. 重写方法</h3><p>createComponent<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> JComponent <span class="title">createComponent</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> myPanel;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>apply<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">apply</span><span class="params">()</span> <span class="keyword">throws</span> ConfigurationException </span>&#123;</span><br><span class="line">  myConflictsTableModel.apply();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>reset<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reset</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  myConflictsTableModel.reset();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>isModified<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isModified</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> !VimPlugin.getKey().getShortcutConflicts().equals(getCurrentData());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>disposeUIResources<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">disposeUIResources</span><span class="params">()</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-插件配置文件中添加配置"><a href="#3-插件配置文件中添加配置" class="headerlink" title="3. 插件配置文件中添加配置"></a>3. 插件配置文件中添加配置</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">extensions</span> <span class="attr">defaultExtensionNs</span>=<span class="string">"com.intellij"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">applicationConfigurable</span> <span class="attr">instance</span>=<span class="string">"com.maddyhome.idea.vim.ui.VimEmulationConfigurable"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">extensions</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>参考:<br><a href="https://confluence.jetbrains.com/display/IDEADEV/Customizing+the+IDEA+Settings+Dialog" title="0.0" target="_blank" rel="noopener">Customizing the IDEA Settings Dialog - IntelliJ IDEA - Confluence</a><br><a href="http://blog.csdn.net/dc_726/article/details/14139155" title="0.0" target="_blank" rel="noopener">Intellij IDEA插件开发入门 - 西代零零发 - CSDN博客</a>  </p>
+<p>在重写的方法中可以看到 reset() 方法:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reset</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  myConflictsTableModel.reset();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>也就是说想看看这个设置面板的快捷键列表的生成可以直接找重写的<code>reset()</code>方法  </p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2018/01/08/ideavim-设置面板的简单分析/" data-id="cjc518t13001b41lwha7mznxc" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2018/01/08/ideavim-设置面板的简单分析/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2018/01/08/ideavim-设置面板的简单分析/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2018/01/07/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">Hello World</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">18</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CMD/">CMD</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/">Chrome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mybatis/">Mybatis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nmap/">Nmap</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Use/">Use</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wireshark/">Wireshark</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/list/">list</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/CMD/" style="font-size: 10px;">CMD</a> <a href="/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 13.33px;">Hexo</a> <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 16.67px;">MySQL</a> <a href="/tags/Mybatis/" style="font-size: 10px;">Mybatis</a> <a href="/tags/Nmap/" style="font-size: 10px;">Nmap</a> <a href="/tags/Use/" style="font-size: 20px;">Use</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/Wireshark/" style="font-size: 10px;">Wireshark</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/list/" style="font-size: 10px;">list</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2018 sqsgalaxys<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_config = function () {
+        
+            this.page.url = 'http://yoursite.com/2018/01/08/ideavim-设置面板的简单分析/';
+        
+        this.page.identifier = 'ideavim-设置面板的简单分析';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'hexo-theme-icarus' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
