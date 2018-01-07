@@ -238,27 +238,11 @@
         
         <div class="article-entry" itemprop="articleBody">
         
-            
-            <p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fn8jcxhzpxj31401cx13r.jpg" alt=""></p>
-<h2 id="The-cause-of-this"><a href="#The-cause-of-this" class="headerlink" title="The cause of this"></a>The cause of this</h2><p>本来想写一篇 ideavim 设置中 vim 的快捷键与 idea 本身快捷键的对比,但是经过搜索发现已经有一片类似的博客了:<br><a href="https://isudox.com/2016/07/26/scheme-of-ideavim-keymap/" title="0.0" target="_blank" rel="noopener">JetBrains IDE Vim 模式的方案 | I sudo X</a>(这篇博客貌似有个彩蛋:点击页脚眼睛标志旁边的数字)<br>注意到设置面板中的 “Shortcut Conflicts for Active Keymap”,(活动的Keymap的快捷冲突)<br>而且这篇博客中对比的快捷键和我 IntelliJ IDEA 中的 Vim Emulation 设置不太一样<br><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fn8hrga1kzj31kw0zggta.jpg" alt="我的 ideavim 设置面板"><br>所以猜想是不是这个 列表是不是根据快捷键的冲突动态生成的</p>
-<h2 id="研究过程"><a href="#研究过程" class="headerlink" title="研究过程:"></a>研究过程:</h2><h3 id="1-clone-代码-JetBrains-ideavim-Vim-emulation-plug-in-for-IDEs-based-on-the-IntelliJ-platform"><a href="#1-clone-代码-JetBrains-ideavim-Vim-emulation-plug-in-for-IDEs-based-on-the-IntelliJ-platform" class="headerlink" title="1. clone 代码: JetBrains/ideavim: Vim emulation plug-in for IDEs based on the IntelliJ platform."></a>1. clone <a href="https://github.com/JetBrains/ideavim.git" target="_blank" rel="noopener">代码</a>: <a href="https://github.com/JetBrains/ideavim" title="0.0" target="_blank" rel="noopener">JetBrains/ideavim: Vim emulation plug-in for IDEs based on the IntelliJ platform.</a></h3><h3 id="2-搜索字符串"><a href="#2-搜索字符串" class="headerlink" title="2. 搜索字符串"></a>2. 搜索字符串</h3><p>找到<code>VimEmulationConfigurable.java</code>文件中包含字符串<code>&quot;Shortcut Conflicts for Active Keymap&quot;</code>:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// com.maddyhome.idea.vim.ui.VimEmulationConfigurable.VimSettingsPanel</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">VimSettingsPanel</span> <span class="keyword">extends</span> <span class="title">JPanel</span> </span>&#123;</span><br><span class="line">  <span class="meta">@NotNull</span> <span class="keyword">private</span> <span class="keyword">final</span> VimShortcutConflictsTable myShortcutConflictsTable;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">VimSettingsPanel</span><span class="params">(@NotNull VimShortcutConflictsTable.Model model)</span> </span>&#123;</span><br><span class="line">    myShortcutConflictsTable = <span class="keyword">new</span> VimShortcutConflictsTable(model);</span><br><span class="line">    setLayout(<span class="keyword">new</span> BorderLayout());</span><br><span class="line">    <span class="keyword">final</span> JScrollPane scrollPane = <span class="keyword">new</span> JBScrollPane(myShortcutConflictsTable);</span><br><span class="line">    scrollPane.setBorder(<span class="keyword">new</span> LineBorder(UIUtil.getBorderColor()));</span><br><span class="line">    <span class="keyword">final</span> JPanel conflictsPanel = <span class="keyword">new</span> JPanel(<span class="keyword">new</span> BorderLayout());</span><br><span class="line">    <span class="keyword">final</span> String title = String.format(<span class="string">"Shortcut Conflicts for Active Keymap"</span>);</span><br><span class="line">    conflictsPanel.setBorder(IdeBorderFactory.createTitledBorder(title, <span class="keyword">false</span>));</span><br><span class="line">    conflictsPanel.add(scrollPane);</span><br><span class="line">    add(conflictsPanel, BorderLayout.CENTER);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>从中可以看到 <code>conflictsPanel</code>,<code>scrollPane</code>,<code>myShortcutConflictsTable</code> 几个面板的嵌套,最终添加:<br><code>myShortcutConflictsTable = new VimShortcutConflictsTable(model);</code><br>找到 <code>com.maddyhome.idea.vim.ui.VimEmulationConfigurable.VimShortcutConflictsTable#VimShortcutConflictsTable</code> 的声明:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">VimShortcutConflictsTable</span><span class="params">(@NotNull Model model)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">super</span>(model);</span><br><span class="line">  getTableColumn(Column.KEYSTROKE).setPreferredWidth(<span class="number">100</span>);</span><br><span class="line">  getTableColumn(Column.IDE_ACTION).setPreferredWidth(<span class="number">400</span>);</span><br><span class="line">  <span class="keyword">final</span> TableColumn ownerColumn = getTableColumn(Column.OWNER);</span><br><span class="line">  <span class="keyword">final</span> ComboBoxTableRenderer&lt;ShortcutOwner&gt; renderer = <span class="keyword">new</span> ShortcutOwnerRenderer();</span><br><span class="line">  ownerColumn.setPreferredWidth(<span class="number">150</span>);</span><br><span class="line">  ownerColumn.setCellRenderer(renderer);</span><br><span class="line">  ownerColumn.setCellEditor(renderer);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>跟着 renderer 找下去并没有发现什么有关对比快捷键冲突的地方,从<code>Model</code>发现<code>reset()</code>方法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Model</span> <span class="keyword">extends</span> <span class="title">AbstractTableModel</span> </span>&#123;</span><br><span class="line">  <span class="meta">@NotNull</span> <span class="keyword">private</span> <span class="keyword">final</span> List&lt;Row&gt; myRows = <span class="keyword">new</span> ArrayList&lt;Row&gt;();</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Model</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    reset();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// ....</span></span><br></pre></td></tr></table></figure></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reset</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  myRows.clear();</span><br><span class="line">  <span class="keyword">for</span> (Map.Entry&lt;KeyStroke, ShortcutOwner&gt; entry : VimPlugin.getKey().getShortcutConflicts().entrySet()) &#123;</span><br><span class="line">    <span class="keyword">final</span> KeyStroke keyStroke = entry.getKey();</span><br><span class="line">    <span class="keyword">final</span> List&lt;AnAction&gt; actions = VimPlugin.getKey().getKeymapConflicts(keyStroke);</span><br><span class="line">    <span class="keyword">if</span> (!actions.isEmpty()) &#123;</span><br><span class="line">      myRows.add(<span class="keyword">new</span> Row(keyStroke, actions.get(<span class="number">0</span>), entry.getValue()));</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  Collections.sort(myRows);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这里的 <code>reset()</code> 方法应该就是获取冲突的快捷键添加到设置面板的表格中的.<br>为什么方法名是<code>reset()</code> 呢?  </p>
-<hr>
-<p>从另一个角度来探索:  </p>
-<h2 id="idea-插件添加设置面板"><a href="#idea-插件添加设置面板" class="headerlink" title="idea 插件添加设置面板"></a>idea 插件添加设置面板</h2><h3 id="1-创建继承-Configurable-接口的类"><a href="#1-创建继承-Configurable-接口的类" class="headerlink" title="1. 创建继承 Configurable 接口的类"></a>1. 创建继承 Configurable 接口的类</h3><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">VimEmulationConfigurable</span> <span class="keyword">implements</span> <span class="title">Configurable</span> </span>&#123;</span><br></pre></td></tr></table></figure>
-<h3 id="2-重写方法"><a href="#2-重写方法" class="headerlink" title="2. 重写方法"></a>2. 重写方法</h3><p>createComponent<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> JComponent <span class="title">createComponent</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> myPanel;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>apply<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">apply</span><span class="params">()</span> <span class="keyword">throws</span> ConfigurationException </span>&#123;</span><br><span class="line">  myConflictsTableModel.apply();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>reset<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reset</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  myConflictsTableModel.reset();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>isModified<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isModified</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> !VimPlugin.getKey().getShortcutConflicts().equals(getCurrentData());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>disposeUIResources<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">disposeUIResources</span><span class="params">()</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="3-插件配置文件中添加配置"><a href="#3-插件配置文件中添加配置" class="headerlink" title="3. 插件配置文件中添加配置"></a>3. 插件配置文件中添加配置</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">extensions</span> <span class="attr">defaultExtensionNs</span>=<span class="string">"com.intellij"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">applicationConfigurable</span> <span class="attr">instance</span>=<span class="string">"com.maddyhome.idea.vim.ui.VimEmulationConfigurable"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">extensions</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>参考:<br><a href="https://confluence.jetbrains.com/display/IDEADEV/Customizing+the+IDEA+Settings+Dialog" title="0.0" target="_blank" rel="noopener">Customizing the IDEA Settings Dialog - IntelliJ IDEA - Confluence</a><br><a href="http://blog.csdn.net/dc_726/article/details/14139155" title="0.0" target="_blank" rel="noopener">Intellij IDEA插件开发入门 - 西代零零发 - CSDN博客</a>  </p>
-<p>在重写的方法中可以看到 reset() 方法:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reset</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  myConflictsTableModel.reset();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>也就是说想看看这个设置面板的快捷键列表的生成可以直接找重写的<code>reset()</code>方法  </p>
-
+            <p><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fn8jcxhzpxj31401cx13r.jpg" alt=""></p>
+<h2 id="The-cause-of-this"><a href="#The-cause-of-this" class="headerlink" title="The cause of this"></a>The cause of this</h2><p>本来想写一篇 ideavim 设置中 vim 的快捷键与 idea 本身快捷键的对比,但是经过搜索发现已经有一片类似的博客了:<br><a href="https://isudox.com/2016/07/26/scheme-of-ideavim-keymap/" title="0.0" target="_blank" rel="noopener">JetBrains IDE Vim 模式的方案 | I sudo X</a>(这篇博客貌似有个彩蛋:点击页脚眼睛标志旁边的数字)<br>注意到设置面板中的 “Shortcut Conflicts for Active Keymap”,(活动的Keymap的快捷冲突)<br>而且这篇博客中对比的快捷键和我 IntelliJ IDEA 中的 Vim Emulation 设置不太一样<br><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fn8hrga1kzj31kw0zggta.jpg" alt="我的 ideavim 设置面板"><br>所以猜想是不是这个 列表是不是根据快捷键的冲突动态生成的</p></p>
+            <p class="article-more-link">
+                <a href="/2018/01/08/ideavim-设置面板的简单分析/#more">查看更多</a>
+            </p>
         
         </div>
         <footer class="article-footer">
@@ -268,7 +252,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2018/01/08/ideavim-设置面板的简单分析/" data-id="cjc518t13001b41lwha7mznxc" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2018/01/08/ideavim-设置面板的简单分析/" data-id="cjc51th07001b2bpqv43yzf11" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -364,7 +348,7 @@
     <div class="article-date">
         <i class="fa fa-calendar"></i>
         <a href="/2018/01/07/hello-world/">
-            <time datetime="2018-01-07T17:08:26.271Z" itemprop="datePublished">2018-01-07</time>
+            <time datetime="2018-01-07T17:24:31.743Z" itemprop="datePublished">2018-01-07</time>
         </a>
     </div>
 
@@ -403,7 +387,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2018/01/07/hello-world/" data-id="cjc518t0w001841lw3kaoqb2z" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2018/01/07/hello-world/" data-id="cjc51th0300182bpq289glfv4" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -525,7 +509,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2018/01/02/2018年1月2日x/" data-id="cjc518syh000241lw9ww25y0x" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2018/01/02/2018年1月2日x/" data-id="cjc51tgxw00022bpqo1oic4h8" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -646,7 +630,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2018/01/02/2018年1月2日/" data-id="cjc518sxs000041lwwjny4khh" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2018/01/02/2018年1月2日/" data-id="cjc51tgxa00002bpqgny6jdia" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -767,7 +751,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2018/01/02/test-1/" data-id="cjc518t19001g41lwjhp62st2" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2018/01/02/test-1/" data-id="cjc51th0e001g2bpq13x19npd" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -888,7 +872,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2018/01/01/TestPostFromVimHexo-1/" data-id="cjc518sza000a41lw9op50dbq" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2018/01/01/TestPostFromVimHexo-1/" data-id="cjc51tgyl000a2bpqofmmfgdu" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1010,7 +994,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2018/01/01/TestPostFromVimHexo/" data-id="cjc518sze000b41lw86ah04kq" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2018/01/01/TestPostFromVimHexo/" data-id="cjc51tgyr000b2bpqkohjepxy" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1131,7 +1115,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2018/01/01/vim-hexo/" data-id="cjc518t1z001s41lwoq4jhw9b" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2018/01/01/vim-hexo/" data-id="cjc51th0y001s2bpqgnj0frxz" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1253,7 +1237,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2018/01/01/test-post-at-2018-01-01-01-53-56/" data-id="cjc518t1o001k41lwgh571f8z" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2018/01/01/test-post-at-2018-01-01-01-53-56/" data-id="cjc51th0p001k2bpqsevi4mp1" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1375,7 +1359,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2018/01/01/test-post-at-2018-01-01-01-37-11/" data-id="cjc518t1j001i41lwss26nd1l" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2018/01/01/test-post-at-2018-01-01-01-37-11/" data-id="cjc51th0m001i2bpqlwg5wtqr" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
