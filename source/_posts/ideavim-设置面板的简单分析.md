@@ -13,6 +13,7 @@ tags:
 ![我的 ideavim 设置面板](https://ws3.sinaimg.cn/large/006tNc79gy1fn8hrga1kzj31kw0zggta.jpg)
 所以猜想是不是这个 列表是不是根据快捷键的冲突动态生成的
 
+<!-- more -->
 ## 研究过程:
 ### 1. clone [代码](https://github.com/JetBrains/ideavim.git): [JetBrains/ideavim: Vim emulation plug-in for IDEs based on the IntelliJ platform.](https://github.com/JetBrains/ideavim '0.0')
 ### 2. 搜索字符串  
