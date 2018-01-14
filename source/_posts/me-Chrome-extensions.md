@@ -11,7 +11,7 @@ tags:
 `~/Library/Application Support/Google/Chrome/Default/Extensions`
 插件地址:
 
-``` python
+```
 # -*- coding: utf-8 -*-
 import socket
 import socks
@@ -344,7 +344,7 @@ for extension in extensions:
 > 
 > 0.98.1-0.98.2
 > 1. 增加卡片自定义标签(多标签用空格分隔)。
-> 2. 增加例句单词填空字段{cloze}。
+> 2. 增加例句单词填空字段 cloze。
 > 
 > 0.98
 > 1. 整合Ankiweb制卡。
@@ -1135,11 +1135,13 @@ for extension in extensions:
 > If you focus TEXTAREA element and press Ctrl+Enter, TEXTAREA turns into vi editor.
 > 
 > wasavi supports following vi commands:
+```
 > * c y d > < gq cc yy dd >> << C Y D gqq
 > * - + ^ <home> $ <end> % | comma(,) ; _ / ? ' ` ( ) { } [[ ]] <enter> 0 j k h l ^N ^P ^H <down> <up> <left> <right> <space> w W b B e E gg gj gk g^ g$ G H M L f F t T n N
 > * ^U ^D ^Y ^E ^B ^F <pageup> <pagedown> z<enter> z. zz z-
 > * x X <delete> p P J period( . ) u ^R ~ ^L ^G m @ q r R a A i I o O & s S ZZ
 > * :
+```
 > 
 > wasavi supports following ex commands:
 > * abbreviate cd chdir copy delete edit file filesystem global join k map mark marks move options print put pwd quit read redo s & ~ set registers to unabbreviate undo unmap version v write wq xit yank > < @ *
