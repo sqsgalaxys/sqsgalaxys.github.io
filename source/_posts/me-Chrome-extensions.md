@@ -74,7 +74,7 @@ for extension in extensions:
 - 插件下载地址:
 - 插件自己的介绍:
 - 我的介绍(TODO):
-
+```
 ### [Easy Auto Refresh - Chrome Web Store](https://chrome.google.com/webstore/detail/aabcgdmkeabbnleenpncegpcngjpnjkc '0.0')
 > Automatically reloads web pages after any number of seconds.
 > 
@@ -5268,3 +5268,4 @@ This extension will ask for the following permissions:
 
 Process finished with exit code 0
 
+```
