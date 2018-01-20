@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>记录 Linux 磁盘空间被占满的解决过程 | sqsgalaxys&#39;Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="记录 Linux 磁盘空间被占满的解决过程查看磁盘占用情况12345678-----------» df -lhFilesystem      Size  Used Avail Use% Mounted on/dev/vda1        30G   30G   20K 100% /devtmpfs        911M     0  911M   0% /devtmpfs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="记录 Linux 磁盘空间被占满的解决过程">
+<meta property="og:url" content="http://yoursite.com/2018/01/20/记录Linux磁盘空间被占满的解决过程/index.html">
+<meta property="og:site_name" content="sqsgalaxys&#39;Blog">
+<meta property="og:description" content="记录 Linux 磁盘空间被占满的解决过程查看磁盘占用情况12345678-----------» df -lhFilesystem      Size  Used Avail Use% Mounted on/dev/vda1        30G   30G   20K 100% /devtmpfs        911M     0  911M   0% /devtmpfs">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-01-20T01:25:06.139Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="记录 Linux 磁盘空间被占满的解决过程">
+<meta name="twitter:description" content="记录 Linux 磁盘空间被占满的解决过程查看磁盘占用情况12345678-----------» df -lhFilesystem      Size  Used Avail Use% Mounted on/dev/vda1        30G   30G   20K 100% /devtmpfs        911M     0  911M   0% /devtmpfs">
+    
+
+    
+        <link rel="alternate" href="/" title="sqsgalaxys&#39;Blog" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">sqsgalaxys&#39;Blog</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.jpg" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.jpg" />
+            <h2 id="name">sqsgalaxys</h2>
+            <h3 id="title">Novice</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>China</span>
+            <a id="follow" target="_blank" href="https://github.com/sqsgalaxys/">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                36
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                14
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="http://github.com/sqsgalaxys/" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://twitter.com/GacktCamiu" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://www.facebook.com/gacktcamiu" target="_blank" title="facebook" class=tooltip>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://dribbble.com/sqsgalaxys" target="_blank" title="dribbble" class=tooltip>
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-记录Linux磁盘空间被占满的解决过程" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            记录 Linux 磁盘空间被占满的解决过程
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/01/20/记录Linux磁盘空间被占满的解决过程/">
+            <time datetime="2018-01-20T07:24:11.000Z" itemprop="datePublished">2018-01-20</time>
+        </a>
+    </div>
+
+
+                        
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="记录-Linux-磁盘空间被占满的解决过程"><a href="#记录-Linux-磁盘空间被占满的解决过程" class="headerlink" title="记录 Linux 磁盘空间被占满的解决过程"></a>记录 Linux 磁盘空间被占满的解决过程</h1><h2 id="查看磁盘占用情况"><a href="#查看磁盘占用情况" class="headerlink" title="查看磁盘占用情况"></a>查看磁盘占用情况</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-----------» df -lh</span><br><span class="line">Filesystem      Size  Used Avail Use% Mounted on</span><br><span class="line">/dev/vda1        30G   30G   20K 100% /</span><br><span class="line">devtmpfs        911M     0  911M   0% /dev</span><br><span class="line">tmpfs           920M   16K  920M   1% /dev/shm</span><br><span class="line">tmpfs           920M   89M  831M  10% /run</span><br><span class="line">tmpfs           920M     0  920M   0% /sys/fs/cgroup</span><br><span class="line">tmpfs           184M     0  184M   0% /run/user/0</span><br></pre></td></tr></table></figure>
+<h2 id="不断查看-下面目录文件-夹-大小找到大文件-夹"><a href="#不断查看-下面目录文件-夹-大小找到大文件-夹" class="headerlink" title="不断查看 / 下面目录文件(夹)大小找到大文件(夹)"></a>不断查看 / 下面目录文件(夹)大小找到大文件(夹)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">-----------» <span class="built_in">cd</span> / &amp;&amp; du -sh *</span><br><span class="line">0	bin</span><br><span class="line">148M	boot</span><br><span class="line">16K	dev</span><br><span class="line">178M	etc</span><br><span class="line">1.3G	home</span><br><span class="line">0	lib</span><br><span class="line">0	lib64</span><br><span class="line">0	media</span><br><span class="line">4.0K	meta.js</span><br><span class="line">0	mnt</span><br><span class="line">3.9G	opt</span><br><span class="line">du: cannot access ‘proc/5030/task/5030/fd/4’: No such file or directory</span><br><span class="line">du: cannot access ‘proc/5030/task/5030/fdinfo/4’: No such file or directory</span><br><span class="line">du: cannot access ‘proc/5030/fd/4’: No such file or directory</span><br><span class="line">du: cannot access ‘proc/5030/fdinfo/4’: No such file or directory</span><br><span class="line">0	proc</span><br><span class="line">1.6G	root</span><br><span class="line">89M	run</span><br><span class="line">0	sbin</span><br><span class="line">0	srv</span><br><span class="line">0	sys</span><br><span class="line">12K	tmp</span><br><span class="line">68K	Users</span><br><span class="line">3.7G	usr</span><br><span class="line">20G	var</span><br><span class="line">-----------» <span class="built_in">cd</span> /var &amp;&amp; !!</span><br><span class="line">-----------» <span class="built_in">cd</span> /var &amp;&amp; du -sh *</span><br><span class="line">0	adm</span><br><span class="line">107M	cache</span><br><span class="line">0	crash</span><br><span class="line">220K	db</span><br><span class="line">0	empty</span><br><span class="line">0	games</span><br><span class="line">0	gopher</span><br><span class="line">0	kerberos</span><br><span class="line">2.2G	lib</span><br><span class="line">0	<span class="built_in">local</span></span><br><span class="line">0	lock</span><br><span class="line">                                    17G	<span class="built_in">log</span></span><br><span class="line">0	mail</span><br><span class="line">0	nis</span><br><span class="line">16K	opengrok</span><br><span class="line">0	opt</span><br><span class="line">0	preserve</span><br><span class="line">0	run</span><br><span class="line">132K	spool</span><br><span class="line">4.0K	tmp</span><br><span class="line">....</span><br></pre></td></tr></table></figure>
+<p>可以看到 log 文件夹有 17 GB 大小,进入log目录查看目录下文件大小:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line">-----------» ^var^var/<span class="built_in">log</span></span><br><span class="line">-----------» <span class="built_in">cd</span> /var/<span class="built_in">log</span> &amp;&amp; du -sh *</span><br><span class="line">0	agent_debug_info_msgs.log</span><br><span class="line">1.8M	AgentMonitor.log</span><br><span class="line">11M	AgentMonitor.log.1</span><br><span class="line">11M	AgentMonitor.log.2</span><br><span class="line">11M	AgentMonitor.log.3</span><br><span class="line">11M	AgentMonitor.log.4</span><br><span class="line">11M	AgentMonitor.log.5</span><br><span class="line">3.6M	ambari-server</span><br><span class="line">1.2M	anaconda</span><br><span class="line">34M	audit</span><br><span class="line">0	auth.log</span><br><span class="line">0	boot.log</span><br><span class="line">0	boot.log-20180111</span><br><span class="line">12K	boot.log-20180112</span><br><span class="line">0	boot.log-20180115</span><br><span class="line">0	boot.log-20180116</span><br><span class="line">0	boot.log-20180117</span><br><span class="line">0	boot.log-20180119</span><br><span class="line">0	boot.log-20180120</span><br><span class="line">4.8M	btmp</span><br><span class="line">10M	btmp-20180101</span><br><span class="line">5.9M	CloudAgent.log</span><br><span class="line">11M	CloudAgent.log.1</span><br><span class="line">11M	CloudAgent.log.10</span><br><span class="line">11M	CloudAgent.log.2</span><br><span class="line">11M	CloudAgent.log.3</span><br><span class="line">11M	CloudAgent.log.4</span><br><span class="line">11M	CloudAgent.log.5</span><br><span class="line">11M	CloudAgent.log.6</span><br><span class="line">11M	CloudAgent.log.7</span><br><span class="line">11M	CloudAgent.log.8</span><br><span class="line">11M	CloudAgent.log.9</span><br><span class="line">0	CloudUpdate_debug_info_msgs.log</span><br><span class="line">1.4M	CloudUpdate.log</span><br><span class="line">24K	cron</span><br><span class="line">44K	cron-20171224</span><br><span class="line">52K	cron-20171231</span><br><span class="line">52K	cron-20180107</span><br><span class="line">40K	cron-20180115</span><br><span class="line">1.7M	denyhosts</span><br><span class="line">32K	dmesg</span><br><span class="line">0	dmesg.0</span><br><span class="line">32K	dmesg.old</span><br><span class="line">0	dpkg.log</span><br><span class="line">4.0K	grubby</span><br><span class="line">4.0K	grubby_prune_debug</span><br><span class="line">488K	httpd</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                17G	jenkins</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">24K	lastlog</span><br><span class="line">0	maillog</span><br><span class="line">0	maillog-20171224</span><br><span class="line">0	maillog-20171231</span><br><span class="line">0	maillog-20180107</span><br><span class="line">0	maillog-20180115</span><br><span class="line">1.1M	messages</span><br><span class="line">27M	messages-20171224</span><br><span class="line">31M	messages-20171231</span><br><span class="line">28M	messages-20180107</span><br><span class="line">18M	messages-20180115</span><br><span class="line">184K	mongodb</span><br><span class="line">92K	mysqld.log</span><br><span class="line">84K	nginx</span><br><span class="line">0	ntp</span><br><span class="line">24K	ntp.log</span><br><span class="line">0	ntpstats</span><br><span class="line">0	ppp</span><br><span class="line">4.0K	privoxy</span><br><span class="line">0	qemu-ga</span><br><span class="line">544K	secure</span><br><span class="line">860K	secure-20171224</span><br><span class="line">36K	secure-20171231</span><br><span class="line">820K	secure-20180107</span><br><span class="line">564K	secure-20180115</span><br><span class="line">880K	secure.bak</span><br><span class="line">2.1M	shadowsocksr.log</span><br><span class="line">0	spooler</span><br><span class="line">0	spooler-20171224</span><br><span class="line">0	spooler-20171231</span><br><span class="line">0	spooler-20180107</span><br><span class="line">0	spooler-20180115</span><br><span class="line">0	tallylog</span><br><span class="line">48K	tuned</span><br><span class="line">4.0K	udinstall.log</span><br><span class="line">0	wpa_supplicant.log</span><br><span class="line">308K	wtmp</span><br><span class="line">4.0K	yum.log</span><br><span class="line">36K	yum.log-20180101</span><br></pre></td></tr></table></figure>
+<h2 id="删除大文件-夹"><a href="#删除大文件-夹" class="headerlink" title="删除大文件(夹)"></a>删除大文件(夹)</h2><p>jenkins 的日志有 17GB,赶紧停止 jenkins:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-----------» service jenkins stop   </span><br><span class="line">Stopping jenkins (via systemctl):                          [  OK  ]</span><br><span class="line">-----------»</span><br></pre></td></tr></table></figure>
+<p>删除 jenkins 日志:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /var/<span class="built_in">log</span>/jenkins</span><br></pre></td></tr></table></figure></p>
+<h2 id="命令总结"><a href="#命令总结" class="headerlink" title="命令总结:"></a>命令总结:</h2><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看磁盘使用情况</span></span><br><span class="line">df -<span class="keyword">lh</span></span><br><span class="line"><span class="keyword"># </span>查看当前文件夹下面文件(夹)的大小</span><br><span class="line">du -<span class="keyword">sh </span>*</span><br></pre></td></tr></table></figure>
+<h2 id="学习到的经验"><a href="#学习到的经验" class="headerlink" title="学习到的经验:"></a>学习到的经验:</h2><p>在装完一个应用后需要观察应用一段时间,看看系统的运行是否正常.</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2018/01/20/记录Linux磁盘空间被占满的解决过程/" data-id="cjcmo9rti001z6dszvblt6ril" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2018/01/20/记录Linux磁盘空间被占满的解决过程/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2018/01/20/记录Linux磁盘空间被占满的解决过程/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2018/01/20/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">Hello World</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">18</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CMD/">CMD</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/">Chrome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mybatis/">Mybatis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nmap/">Nmap</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Use/">Use</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/">Vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wireshark/">Wireshark</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/list/">list</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/CMD/" style="font-size: 10px;">CMD</a> <a href="/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 13.33px;">Hexo</a> <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 16.67px;">MySQL</a> <a href="/tags/Mybatis/" style="font-size: 10px;">Mybatis</a> <a href="/tags/Nmap/" style="font-size: 10px;">Nmap</a> <a href="/tags/Use/" style="font-size: 20px;">Use</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/Wireshark/" style="font-size: 10px;">Wireshark</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/list/" style="font-size: 10px;">list</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2018 sqsgalaxys<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_config = function () {
+        
+            this.page.url = 'http://yoursite.com/2018/01/20/记录Linux磁盘空间被占满的解决过程/';
+        
+        this.page.identifier = '记录Linux磁盘空间被占满的解决过程';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'hexo-theme-icarus' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

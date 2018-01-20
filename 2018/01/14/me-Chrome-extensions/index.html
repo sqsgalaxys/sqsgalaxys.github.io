@@ -3,20 +3,19 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Use nmap | sqsgalaxys&#39;Blog</title>
+    <title>Python 爬虫爬取 chrome webstore | sqsgalaxys&#39;Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="NmapHost discoveryPS n - tcp syn pingPA n - tcp ack pingPU n - udp pingPM - nctmask reqPP - timestamp rcqPE - echo reqsL - list scanPO - protocol pingPN - no pingn - no DNSR - DNS resolution for all t">
-<meta name="keywords" content="Use,Nmap">
+    <meta name="description" content="Python 爬虫爬取 chrome webstore插件本地存放目录:~/Library/Application Support/Google/Chrome/Default/Extensions 插件地址 = &amp;#39;https://chrome.google.com/webstore/detail/&amp;#39; + 插件存放目录里的文件夹名 12345678910111213141516171">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Use nmap">
-<meta property="og:url" content="http://yoursite.com/2016/08/15/Use-nmap/index.html">
+<meta property="og:title" content="Python 爬虫爬取 chrome webstore">
+<meta property="og:url" content="http://yoursite.com/2018/01/14/me-Chrome-extensions/index.html">
 <meta property="og:site_name" content="sqsgalaxys&#39;Blog">
-<meta property="og:description" content="NmapHost discoveryPS n - tcp syn pingPA n - tcp ack pingPU n - udp pingPM - nctmask reqPP - timestamp rcqPE - echo reqsL - list scanPO - protocol pingPN - no pingn - no DNSR - DNS resolution for all t">
+<meta property="og:description" content="Python 爬虫爬取 chrome webstore插件本地存放目录:~/Library/Application Support/Google/Chrome/Default/Extensions 插件地址 = &amp;#39;https://chrome.google.com/webstore/detail/&amp;#39; + 插件存放目录里的文件夹名 12345678910111213141516171">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2018-01-20T01:25:06.139Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Use nmap">
-<meta name="twitter:description" content="NmapHost discoveryPS n - tcp syn pingPA n - tcp ack pingPU n - udp pingPM - nctmask reqPP - timestamp rcqPE - echo reqsL - list scanPO - protocol pingPN - no pingn - no DNSR - DNS resolution for all t">
+<meta name="twitter:title" content="Python 爬虫爬取 chrome webstore">
+<meta name="twitter:description" content="Python 爬虫爬取 chrome webstore插件本地存放目录:~/Library/Application Support/Google/Chrome/Default/Extensions 插件地址 = &amp;#39;https://chrome.google.com/webstore/detail/&amp;#39; + 插件存放目录里的文件夹名 12345678910111213141516171">
     
 
     
@@ -207,7 +206,7 @@
 </aside>
 
             
-            <section id="main"><article id="post-Use-nmap" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-me-Chrome-extensions" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -215,7 +214,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-            Use nmap
+            Python 爬虫爬取 chrome webstore
         </h1>
     
 
@@ -224,19 +223,14 @@
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2016/08/15/Use-nmap/">
-            <time datetime="2016-08-15T09:11:55.000Z" itemprop="datePublished">2016-08-15</time>
+        <a href="/2018/01/14/me-Chrome-extensions/">
+            <time datetime="2018-01-14T23:34:58.000Z" itemprop="datePublished">2018-01-14</time>
         </a>
     </div>
 
 
                         
                         
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Nmap/">Nmap</a>, <a class="tag-link" href="/tags/Use/">Use</a>
-    </div>
-
                     </div>
                 
             </header>
@@ -245,40 +239,12 @@
         <div class="article-entry" itemprop="articleBody">
         
             
-            <h1 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h1><h2 id="Host-discovery"><a href="#Host-discovery" class="headerlink" title="Host discovery"></a>Host discovery</h2><p>PS n - tcp syn ping<br>PA n - tcp ack ping<br>PU n - udp ping<br>PM - nctmask req<br>PP - timestamp rcq<br>PE - echo req<br>sL - list scan<br>PO - protocol ping<br>PN - no ping<br>n - no DNS<br>R - DNS resolution for all targets</p>
-<h2 id="Port-scanning-techniques"><a href="#Port-scanning-techniques" class="headerlink" title="Port scanning techniques"></a>Port scanning techniques</h2><p>sS<br>sT<br>sU<br>sA<br>sW<br>sY<br>sZ<br>sO<br>sN sF sX - null,fin,xmas</p>
-<p>软件安装环境是win7、使用Zenmap， nmap6.49BETA2</p>
-<p>扫描主机端口<br>nmap -T4 -A -v 192.168.0.207</p>
-<p>nmap -O –osscan-guess 192.168.0.207<br>版本扫描（要在扫描端口后）<br>nmap -sV 192.168.0.207<br>Idle scan 使用另一个目标网张的主机发送数据包<br>nmap -sL 192.168.0.23 192.168.0.207</p>
-<p>其它选项说明：<br>-A 操作系统检测<br>-6 ipv6检测<br>-T 时间模板，0-5<br>-v 增加冗余<br>-exclude 排除扫描地址<br>-exclude file 排除文件里的ip地址</p>
-<h3 id="根据网段扫描获取主机列表"><a href="#根据网段扫描获取主机列表" class="headerlink" title="根据网段扫描获取主机列表"></a>根据网段扫描获取主机列表</h3><p>// 普通扫描<br><code>nmap -sn 192.168.1.*</code><br>// ARP Ping 扫描:<br><code>nmap -PR 192.168.1.*</code></p>
-<h3 id="针对主机扫描端口"><a href="#针对主机扫描端口" class="headerlink" title="针对主机扫描端口"></a>针对主机扫描端口</h3><p>SYN半开扫描<br><code>nmap -sS 192.168.1.1</code><br>TCP扫描<br><code>nmap -sT 192.168.1.1</code><br>ftp弹跳扫描<br><code>nmap -b username:password@server:port</code></p>
-<p>nmap -sV 192.168.1.88<br>nmap -O 192.168.1.88</p>
-<p>设置Nmap扫描的端口范围</p>
-<p>其它常用选项<br>-A 同时开启系统探测与服务版本探测(也称激烈模式).<br>-v 开启冗余模式,这样能得到详细的信息报告.<br>-e <interface> 使用指定网卡发送数据报文.<br>-6 启用ipv6扫描</interface></p>
-<h2 id="Nmap-Target-Selection"><a href="#Nmap-Target-Selection" class="headerlink" title="Nmap Target Selection"></a>Nmap Target Selection</h2><p>// Scan a single IP<br><code>nmap 192.168.1.1</code></p>
-<p>// Scan a host<br><code>nmap www.testhostname.com</code></p>
-<p>// Scan a range of IPs<br>nmap 192.168.1.1-20</p>
-<p>// Scan a subnet<br><code>nmap 192.168.1.0/24</code></p>
-<p>// Scan targets from a text file<br><code>nmap -iL list-of-ips.txt</code></p>
-<p>Nmap Port Selection<br>Scan a single Port    nmap -p 22 192.168.1.1<br>Scan a range of ports    nmap -p 1-100 192.168.1.1<br>Scan 100 most common ports (Fast)    nmap -F 192.168.1.1<br>Scan all 65535 ports    nmap -p- 192.168.1.1<br>Nmap Port Scan types</p>
-<p>Scan using TCP connect    nmap -sT 192.168.1.1<br>Scan using TCP SYN scan (default)    nmap -sS 192.168.1.1<br>Scan UDP ports    nmap -sU -p 123,161,162 192.168.1.1<br>Scan selected ports - ignore discovery    nmap -Pn -F 192.168.1.1<br>Service and OS Detection</p>
-<p>Detect OS and Services    nmap -A 192.168.1.1<br>Standard service detection    nmap -sV 192.168.1.1<br>More aggressive Service Detection    nmap -sV –version-intensity 5 192.168.1.1<br>Lighter banner grabbing detection    nmap -sV –version-intensity 0 192.168.1.1</p>
-<p>Nmap Output Formats</p>
-<p>Save default output to file    nmap -oN outputfile.txt 192.168.1.1<br>Save results as XML    nmap -oX outputfile.xml 192.168.1.1<br>Save results in a format for grep    nmap -oG outputfile.txt 192.168.1.1<br>Save in all formats    nmap -oA outputfile 192.168.1.1</p>
-<p>Digging deeper with NSE Scripts</p>
-<p>Scan using default safe scripts    nmap -sV -sC 192.168.1.1<br>Get help for a script    nmap –script-help=ssl-heartbleed<br>Scan using a specific NSE script    nmap -sV -p 443 –script=ssl-heartbleed.nse 192.168.1.1<br>Scan with a set of scripts    nmap -sV –script=smb* 192.168.1.1</p>
-<p>A scan to search for DDOS reflection UDP services</p>
-<p>Scan for UDP DDOS reflectors    nmap –sU –A –PN –n –pU:19,53,123,161 –script=ntp-monlist,dns-recursion,snmp-sysdescr 192.168.1.0/24<br>HTTP Service Information</p>
-<p>Gather page titles from HTTP services    nmap –script=http-title 192.168.1.0/24<br>Get HTTP headers of web services    nmap –script=http-headers 192.168.1.0/24<br>Find web apps from known paths    nmap –script=http-enum 192.168.1.0/24<br>Detect Heartbleed SSL Vulnerability</p>
-<p>Heartbleed Testing    nmap -sV -p 443 –script=ssl-heartbleed 192.168.1.0/24<br>IP Address information</p>
-<p>Find Information about IP address    nmap –script=asn-query,whois,ip-geolocation-maxmind 192.168.1.0/24</p>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考:"></a>参考:</h3><ul>
-<li><a href="https://nmap.org/" title="官网" target="_blank" rel="noopener">Nmap: the Network Mapper - Free Security Scanner</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Nmap" target="_blank" rel="noopener">Nmap - Wikipedia, the free encyclopedia</a></li>
-<li><a href="https://zh.wikipedia.org/wiki/Nmap#Nmap.E5.9F.BA.E6.9C.AC.E5.91.BD.E4.BB.A4.E5.92.8C.E5.85.B8.E5.9E.8B.E7.94.A8.E6.B3.95" target="_blank" rel="noopener">Nmap - 维基百科，自由的百科全书</a></li>
-<li><a href="https://hackertarget.com/nmap-cheatsheet-a-quick-reference-guide/" target="_blank" rel="noopener">Nmap Cheat Sheet | HackerTarget.com</a></li>
-<li><a href="http://blog.sbw.so/Article/index/Nmap 介绍与基本使用教程/Nmap%20%E4%BB%8B%E7%BB%8D%E4%B8%8E%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B.html" target="_blank" rel="noopener">Nmap 介绍与基本使用教程</a></li>
+            <h1 id="Python-爬虫爬取-chrome-webstore"><a href="#Python-爬虫爬取-chrome-webstore" class="headerlink" title="Python 爬虫爬取 chrome webstore"></a>Python 爬虫爬取 chrome webstore</h1><p>插件本地存放目录:<br><code>~/Library/Application Support/Google/Chrome/Default/Extensions</code></p>
+<p><code>插件地址 = &#39;https://chrome.google.com/webstore/detail/&#39; + 插件存放目录里的文件夹名</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="keyword">import</span> socks</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">SOCKS5_PROXY_HOST = <span class="string">'127.0.0.1'</span></span><br><span class="line">SOCKS5_PROXY_PORT = <span class="number">1086</span>  <span class="comment"># socks 代理本地端口</span></span><br><span class="line">default_socket = socket.socket</span><br><span class="line">socks.set_default_proxy(socks.SOCKS5, SOCKS5_PROXY_HOST, SOCKS5_PROXY_PORT)</span><br><span class="line">socket.socket = socks.socksocket</span><br><span class="line"></span><br><span class="line"><span class="comment"># url = 'https://chrome.google.com/webstore/detail/infolite/ipjbadabbpedegielkhgpiekdlmfpgal'</span></span><br><span class="line">baseUrl = <span class="string">'https://chrome.google.com/webstore/detail/'</span></span><br><span class="line"></span><br><span class="line">extensions = [</span><br><span class="line">    <span class="string">'aabcgdmkeabbnleenpncegpcngjpnjkc'</span>,</span><br><span class="line">    <span class="string">'aajodjghehmlpahhboidcpfjcncmcklf'</span>,</span><br><span class="line">    <span class="string">'aalnjolghjkkogicompabhhbbkljnlka'</span></span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> extension <span class="keyword">in</span> extensions:</span><br><span class="line">    url = baseUrl + extension</span><br><span class="line">    html_source = requests.get(url, headers=&#123;</span><br><span class="line">        <span class="string">"User-Agent"</span>: <span class="string">"Mozilla/5.001 (windows; U; NT4.0; en-US; rv:1.0) Gecko/25250101"</span>&#125;).text</span><br><span class="line">    <span class="keyword">if</span> html_source:</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            soup = BeautifulSoup(html_source, <span class="string">'html.parser'</span>)</span><br><span class="line">            <span class="comment"># &lt;h1 class="e-f-w"&gt;OneTab&lt;/h1&gt;</span></span><br><span class="line">            <span class="comment"># 插件的标题</span></span><br><span class="line">            <span class="comment"># print("标题: " + soup.html.find_all("title")[0].text)</span></span><br><span class="line">            <span class="comment"># 合成 markdown 链接</span></span><br><span class="line">            title = soup.html.find_all(<span class="string">"title"</span>)[<span class="number">0</span>].text</span><br><span class="line">            print(<span class="string">'### ['</span> + title + <span class="string">']'</span> + <span class="string">'('</span> + url + <span class="string">" '0.0'"</span> + <span class="string">')'</span>)</span><br><span class="line">            <span class="comment"># &lt;pre class="C-b-p-j-Oa"&gt;</span></span><br><span class="line">            <span class="comment"># 插件的自我介绍</span></span><br><span class="line">            print(soup.find_all(<span class="string">"pre"</span>, class_=<span class="string">"C-b-p-j-Oa"</span>)[<span class="number">0</span>].text)</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="comment"># 发生异常，执行这块代码</span></span><br><span class="line">            print(<span class="string">'fail for: '</span> + <span class="string">'['</span> + url + <span class="string">']'</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">'ok'</span>)</span><br><span class="line">            <span class="comment"># 如果没有异常执行这块代码</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">'fail for: '</span> + <span class="string">'['</span> + url + <span class="string">']'</span>)</span><br><span class="line">    <span class="comment"># Wait for 5 seconds</span></span><br><span class="line">    time.sleep(<span class="number">4</span>)</span><br></pre></td></tr></table></figure>
+<p>参考:</p>
+<ul>
+<li><a href="http://lazybios.com/2016/11/chrome-plugin-location-in-your-system/" title="0.0" target="_blank" rel="noopener">你的Chrome插件都装到哪了？</a>  </li>
 </ul>
 
         
@@ -290,7 +256,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/08/15/Use-nmap/" data-id="cjcmo9rsg00186dsziqgp7orn" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2018/01/14/me-Chrome-extensions/" data-id="cjcmo9rsk001b6dszb5fnovz2" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -358,7 +324,7 @@
 
             
     
-        <a href="http://yoursite.com/2016/08/15/Use-nmap/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2016/08/15/Use-nmap/">评论</a>
+        <a href="http://yoursite.com/2018/01/14/me-Chrome-extensions/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2018/01/14/me-Chrome-extensions/">评论</a>
     
 
         </footer>
@@ -367,19 +333,19 @@
         
 <nav id="article-nav">
     
-        <a href="/2016/08/15/Use-Mybatis/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/2018/01/20/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
             <strong class="article-nav-caption">上一篇</strong>
             <div class="article-nav-title">
                 
-                    Use Mybatis
+                    Hello World
                 
             </div>
         </a>
     
     
-        <a href="/2016/08/14/Learn-English/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2018/01/08/ideavim-设置面板的简单分析/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">下一篇</strong>
-            <div class="article-nav-title">Learn English</div>
+            <div class="article-nav-title">ideavim 设置面板的简单分析</div>
         </a>
     
 </nav>
@@ -466,9 +432,9 @@
     <script>
     var disqus_config = function () {
         
-            this.page.url = 'http://yoursite.com/2016/08/15/Use-nmap/';
+            this.page.url = 'http://yoursite.com/2018/01/14/me-Chrome-extensions/';
         
-        this.page.identifier = 'Use-nmap';
+        this.page.identifier = 'me-Chrome-extensions';
     };
     (function() { 
         var d = document, s = d.createElement('script');  
