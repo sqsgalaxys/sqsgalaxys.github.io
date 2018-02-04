@@ -9,6 +9,7 @@ before_script:
   - git clone --branch master https://github.com/sqsgalaxys/sqsgalaxys.github.io.git public
 script:
   - pwd
+  - ls
   - npm run build
 after_success:
   - cd public
