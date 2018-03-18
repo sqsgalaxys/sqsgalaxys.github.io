@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>翻译:-How-to-modify-scripts-behavior-on-signals-using-bash-traps | sqsgalaxys&#39;Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="#  /Users/sqsgalaxys/Downloads/sqsgalaxys.github.io/source/_posts/How-to-modify-scripts-behavior-on-signals-using-bash-traps.md原文:How to modify scripts behavior on signals using bash traps - LinuxConf">
+<meta property="og:type" content="article">
+<meta property="og:title" content="翻译:-How-to-modify-scripts-behavior-on-signals-using-bash-traps">
+<meta property="og:url" content="http://yoursite.com/2018/03/18/How-to-modify-scripts-behavior-on-signals-using-bash-traps/index.html">
+<meta property="og:site_name" content="sqsgalaxys&#39;Blog">
+<meta property="og:description" content="#  /Users/sqsgalaxys/Downloads/sqsgalaxys.github.io/source/_posts/How-to-modify-scripts-behavior-on-signals-using-bash-traps.md原文:How to modify scripts behavior on signals using bash traps - LinuxConf">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-03-18T16:27:15.760Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="翻译:-How-to-modify-scripts-behavior-on-signals-using-bash-traps">
+<meta name="twitter:description" content="#  /Users/sqsgalaxys/Downloads/sqsgalaxys.github.io/source/_posts/How-to-modify-scripts-behavior-on-signals-using-bash-traps.md原文:How to modify scripts behavior on signals using bash traps - LinuxConf">
+    
+
+    
+        <link rel="alternate" href="/" title="sqsgalaxys&#39;Blog" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">sqsgalaxys&#39;Blog</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.jpg" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.jpg" />
+            <h2 id="name">sqsgalaxys</h2>
+            <h3 id="title">Novice</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>China</span>
+            <a id="follow" target="_blank" href="https://github.com/sqsgalaxys/">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                8
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                0
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="http://github.com/sqsgalaxys/" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://twitter.com/GacktCamiu" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://www.facebook.com/gacktcamiu" target="_blank" title="facebook" class=tooltip>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://dribbble.com/sqsgalaxys" target="_blank" title="dribbble" class=tooltip>
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-How-to-modify-scripts-behavior-on-signals-using-bash-traps" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            翻译:-How-to-modify-scripts-behavior-on-signals-using-bash-traps
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/03/18/How-to-modify-scripts-behavior-on-signals-using-bash-traps/">
+            <time datetime="2018-03-18T21:13:15.000Z" itemprop="datePublished">2018-03-18</time>
+        </a>
+    </div>
+
+
+                        
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p># </p>
+<p>/Users/sqsgalaxys/Downloads/sqsgalaxys.github.io/source/_posts/How-to-modify-scripts-behavior-on-signals-using-bash-traps.md<br>原文:<br><a href="https://linuxconfig.org/how-to-modify-scripts-behavior-on-signals-using-bash-traps" title="0.0" target="_blank" rel="noopener">How to modify scripts behavior on signals using bash traps - LinuxConfig.org</a></p>
+<h1 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h1><p>这篇教程在于描述如何使用bash shell 内建的 trap命令来使我们的脚本在它接收到一个信号或在其他特定的情形时有特定的操作</p>
+<h1 id="要求"><a href="#要求" class="headerlink" title="要求"></a>要求</h1><p>无特殊要求</p>
+<h1 id="难度"><a href="#难度" class="headerlink" title="难度"></a>难度</h1><p>容易</p>
+<h1 id="约定"><a href="#约定" class="headerlink" title="约定"></a>约定</h1><h1 id="代表给出的命令应该以-root-权限执行（直接以-root-用户来执行或使用-sudo-命令执行）"><a href="#代表给出的命令应该以-root-权限执行（直接以-root-用户来执行或使用-sudo-命令执行）" class="headerlink" title="- 代表给出的命令应该以 root 权限执行（直接以 root 用户来执行或使用 sudo 命令执行）"></a>- 代表给出的命令应该以 root 权限执行（直接以 root 用户来执行或使用 sudo 命令执行）</h1><p>$ - 代表给出的命令应该以普通权限的用户执行</p>
+<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>当我们写一个重要的脚本,通过使它们可以响应系统的某些信号执行特定的操作,提高它们的鲁棒性是非常重要的.<br>我们可以通过 bash shell 内建的 trap 达到这一目的.</p>
+<h1 id="什么是-traps？"><a href="#什么是-traps？" class="headerlink" title="什么是 traps？"></a>什么是 traps？</h1><p>trap 是一个 bash 机制 它可以自定义脚本的接收到信号时的操作.  这在保证系统在执行脚本出错后恢复系统是非常重要的.  比如写一个脚本,它会在运行时创建一些目录,当它在运行时接收到了 SIGINT 信号,这个脚本会被中断,它创建的目录会被留下来, 我没可以使用traps命令来做一些清除目录的操作.</p>
+<h1 id="Trap-语法"><a href="#Trap-语法" class="headerlink" title="Trap 语法"></a>Trap 语法</h1><p>Trap 语法非常简单和易懂：<br>调用内建的 trap 命令 紧接着在接受到特定信号时需要被执行的命令并指定我们要处理的信号<br><code>trap [-lp] [[arg] sigspec]</code><br>让我们看看 trap 选项的作用<br>当使用 -l 的选项，trap 命令仅仅显示信号及其对应的数字， 同样的输出你可以通过运行 kill -l 命令来获取<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$ trap -l</span><br><span class="line"><span class="number">1</span>) SIGHUP	 <span class="number">2</span>) SIGINT	 <span class="number">3</span>) SIGQUIT	 <span class="number">4</span>) SIGILL	 <span class="number">5</span>) SIGTRAP</span><br><span class="line"><span class="number">6</span>) SIGABRT	 <span class="number">7</span>) SIGBUS	 <span class="number">8</span>) SIGFPE	 <span class="number">9</span>) SIGKILL	<span class="number">10</span>) SIGUSR1</span><br><span class="line"><span class="number">11</span>) SIGSEGV	<span class="number">12</span>) SIGUSR2	<span class="number">13</span>) SIGPIPE	<span class="number">14</span>) SIGALRM	<span class="number">15</span>) SIGTERM</span><br><span class="line"><span class="number">16</span>) SIGSTKFLT	<span class="number">17</span>) SIGCHLD	<span class="number">18</span>) SIGCONT	<span class="number">19</span>) SIGSTOP	<span class="number">20</span>) SIGTSTP</span><br><span class="line"><span class="number">21</span>) SIGTTIN	<span class="number">22</span>) SIGTTOU	<span class="number">23</span>) SIGURG	<span class="number">24</span>) SIGXCPU	<span class="number">25</span>) SIGXFSZ</span><br><span class="line"><span class="number">26</span>) SIGVTALRM	<span class="number">27</span>) SIGPROF	<span class="number">28</span>) SIGWINCH	<span class="number">29</span>) SIGIO	<span class="number">30</span>) SIGPWR</span><br><span class="line"><span class="number">31</span>) SIGSYS	<span class="number">34</span>) SIGRTMIN	<span class="number">35</span>) SIGRTMIN+<span class="number">1</span>	<span class="number">36</span>) SIGRTMIN+<span class="number">2</span>	<span class="number">37</span>) SIGRTMIN+<span class="number">3</span></span><br><span class="line"><span class="number">38</span>) SIGRTMIN+<span class="number">4</span>	<span class="number">39</span>) SIGRTMIN+<span class="number">5</span>	<span class="number">40</span>) SIGRTMIN+<span class="number">6</span>	<span class="number">41</span>) SIGRTMIN+<span class="number">7</span>	<span class="number">42</span>) SIGRTMIN+<span class="number">8</span></span><br><span class="line"><span class="number">43</span>) SIGRTMIN+<span class="number">9</span>	<span class="number">44</span>) SIGRTMIN+<span class="number">10</span>	<span class="number">45</span>) SIGRTMIN+<span class="number">11</span>	<span class="number">46</span>) SIGRTMIN+<span class="number">12</span>	<span class="number">47</span>) SIGRTMIN+<span class="number">13</span></span><br><span class="line"><span class="number">48</span>) SIGRTMIN+<span class="number">14</span>	<span class="number">49</span>) SIGRTMIN+<span class="number">15</span>	<span class="number">50</span>) SIGRTMAX<span class="number">-14</span>	<span class="number">51</span>) SIGRTMAX<span class="number">-13</span>	<span class="number">52</span>) SIGRTMAX<span class="number">-12</span></span><br><span class="line"><span class="number">53</span>) SIGRTMAX<span class="number">-11</span>	<span class="number">54</span>) SIGRTMAX<span class="number">-10</span>	<span class="number">55</span>) SIGRTMAX<span class="number">-9</span>	<span class="number">56</span>) SIGRTMAX<span class="number">-8</span>	<span class="number">57</span>) SIGRTMAX<span class="number">-7</span></span><br><span class="line"><span class="number">58</span>) SIGRTMAX<span class="number">-6</span>	<span class="number">59</span>) SIGRTMAX<span class="number">-5</span>	<span class="number">60</span>) SIGRTMAX<span class="number">-4</span>	<span class="number">61</span>) SIGRTMAX<span class="number">-3</span>	<span class="number">62</span>) SIGRTMAX<span class="number">-2</span></span><br><span class="line"><span class="number">63</span>) SIGRTMAX<span class="number">-1</span>	<span class="number">64</span>) SIGRTMAX</span><br></pre></td></tr></table></figure></p>
+<p>非常重要的是 trap 命令只能重新定义可以被脚本响应的信号,像 SIGKILL 和 SIGSTOP 信号不能被捕获,屏蔽或忽略.</p>
+<p>除了信号，traps 也可以重新定义一些 伪信号，比如 EXIT, ERR(错误) or DEBUG,在以后后面会深入这些细节<br>现在我们只要记住，信号可以通过它的名字或它他的数字 甚至可以没有 SIG 前缀,来指定</p>
+<p>trap 的 -p 选项,-p 选项的前面不能有命令,否则会报错,<br>-p 选项会列出已经设置 trap 的信号和对应的列表.<br>如果指定信号的名字或数字被指定这会列出对应信号对应被设置的 trap 规则,不指定信号的名称或数字的则会显示所有被设置 trap 的信号</p>
+<p><code>$ trap &#39;echo &quot;SIGINT caught!&quot;&#39; SIGINT</code></p>
+<p>我们设置了一个 trap 来捕获 SIGINT 信号，它仅仅是展示 “SIGINT caught” 信息在屏幕上当指定的信号被 shell 接收到<br>如果我们使用trap 的 -p 选项，这会展示我们刚刚定义的 trap</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">trap</span> -p</span><br><span class="line"><span class="built_in">trap</span> -- <span class="string">'echo "SIGINT caught!"'</span> SIGINT</span><br></pre></td></tr></table></figure>
+<p>顺便说一句，这个 trap 现在是 激活的，所以如果我们发送一个 SIGINT 信号，或者使用 kill 命令，或者使用 CTRL-c 快捷键，trap 中绑定的命令将会被执行<br>（只是打印出 ^C 是因为快捷键绑定（combination)</p>
+<figure class="highlight cos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">^C</span></span><br><span class="line">SIGINT caught!</span><br></pre></td></tr></table></figure>
+<h1 id="Trap-实战"><a href="#Trap-实战" class="headerlink" title="Trap 实战"></a>Trap 实战</h1><p>我们现在来写一个简单的脚本,下面就是</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env bash</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># A simple script to demonstrate how trap works</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="built_in">set</span> -e</span><br><span class="line"><span class="built_in">set</span> -u</span><br><span class="line"><span class="built_in">set</span> -o pipefail</span><br><span class="line"></span><br><span class="line"><span class="built_in">trap</span> <span class="string">'echo "signal caught, cleaning..."; rm -i linux_tarball.tar.xz'</span> SIGINT SIGTERM </span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Downloading tarball..."</span></span><br><span class="line">wget -O linux_tarball.tar.xz https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.13.5.tar.xz &amp;&gt; /dev/null</span><br></pre></td></tr></table></figure>
+<p>上面的脚本只是试图下载最新的 linux kernel tarball 到启动 wget 的目录 在执行这任务时如果接收到了 SIGINT 或 SIGTERM 信号 (注意你如何在一行中指定不止一个信号) 下载的部分文件会被删除</p>
+<p>In this case the command are actually two: the first is the echo which prints the message onscreen, and the second is the actual rm command (we provided the -i option to it, so it will ask user confirmation before removing), and they are separated by a semicolon. Instead of specifying commands this way, you can also call functions: this would give you more re-usability. Notice that if you don’t provide any command the signal(s) will just be ignored!<br>在这个例子中，命令实际是两个，第一个是 echo 第二个是实际执行 rm 命令,我们提供 -i 选项给他， 所以它会在删除前要求用户确认 而且他们以逗号分割，除了这样指定命令以外，你也可以调用函数,这样可以给你高可用性 注意，如果你不提供任何命令，信号会被忽略 </p>
+<p>这是在接收到 SIGINT 信号时，脚本的输出:</p>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">$</span> ./fetchlinux.sh</span><br><span class="line"><span class="function"><span class="title">Downloading</span></span> tarball...</span><br><span class="line">^Csignal caught, cleaning...</span><br><span class="line">rm: remove regular <span class="keyword">file</span> <span class="string">'linux_tarball.tar.xz'</span>?</span><br></pre></td></tr></table></figure>
+<p>记住一个非常重要的点: 像上面这样当一个脚本通过信号终止， 他的退出码将是 128 与信号数字的和， 你可以看到，</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">echo</span> $?</span></span><br><span class="line">130</span><br></pre></td></tr></table></figure>
+<p>最后,你可以停用 trap:调用 trap 紧跟着 sign 跟着 信号的名字或者数字</p>
+<p><code>trap - SIGINT SIGTERM</code><br>这个信号将会恢复原来的作用 </p>
+<h1 id="伪信号"><a href="#伪信号" class="headerlink" title="伪信号"></a>伪信号</h1><p>就像上面提到的 trap 不仅可以被用来让脚本响应信号,也可以响应被称作假冒信号的信号 它们不是典型的信号,但是一致的确定的情形也可以被指定 trap</p>
+<h2 id="EXIT"><a href="#EXIT" class="headerlink" title="EXIT"></a>EXIT</h2><p>当 EXIT 被指定在 trap 中,被 trap 命令参数将会在退出 shell 时执行</p>
+<h2 id="ERR-错误"><a href="#ERR-错误" class="headerlink" title="ERR (错误)"></a>ERR (错误)</h2><p>当一个命令返回一个非零的退出值, 附带一些异常时 trap 的参数被执行.它和 shell errexit 选项类似 这个命令必须不是一个 while 或 until 循环的一部分, 它必须不是 if 条件的一部分,也不能是 &amp;&amp; 或 || 条件的一部分 并且它的值不能通过 ! 反转</p>
+<h2 id="DEBUG"><a href="#DEBUG" class="headerlink" title="DEBUG"></a>DEBUG</h2><p>This will cause the argument of the trap to be executed before every simple command, for, case or select commands, and before the first command in shell functions<br>trap 的命令参数将会在一些非常简单的命令 <code>for</code> <code>case</code> 或者 <code>select</code> 命令后,并且在 shell 函数的第一个命令之前执行</p>
+<p>RETURN<br>返回<br>The argument of the trap is executed after a function or a script sourced by using source or the . command.<br>trap 的命令参数将会在以下情形执行:</p>
+<ul>
+<li>执行完一个函数</li>
+<li>一个脚本被 source命令加载</li>
+<li><code>.</code> 命令</li>
+</ul>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2018/03/18/How-to-modify-scripts-behavior-on-signals-using-bash-traps/" data-id="cjex0lk1o0000c3uv9eexc6p6" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2018/03/18/How-to-modify-scripts-behavior-on-signals-using-bash-traps/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2018/03/18/How-to-modify-scripts-behavior-on-signals-using-bash-traps/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2018/02/12/Reload-Spring-Boot-ProperTies/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">Reload-Spring-Boot-ProperTies</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    
+        
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2018 sqsgalaxys<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_config = function () {
+        
+            this.page.url = 'http://yoursite.com/2018/03/18/How-to-modify-scripts-behavior-on-signals-using-bash-traps/';
+        
+        this.page.identifier = 'How-to-modify-scripts-behavior-on-signals-using-bash-traps';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'hexo-theme-icarus' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+
+
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

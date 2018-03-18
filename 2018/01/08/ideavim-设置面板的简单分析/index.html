@@ -14,7 +14,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fn8jcxhzpxj31401cx13r.jpg">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fn8hrga1kzj31kw0zggta.jpg">
-<meta property="og:updated_time" content="2018-03-18T10:04:21.345Z">
+<meta property="og:updated_time" content="2018-03-18T16:27:15.760Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ideavim 设置面板的简单分析">
 <meta name="twitter:description" content="The cause of this本来想写一篇 ideavim 设置中 vim 的快捷键与 idea 本身快捷键的对比,但是经过搜索发现已经有一片类似的博客了:JetBrains IDE Vim 模式的方案 | I sudo X(这篇博客貌似有个彩蛋:点击页脚眼睛标志旁边的数字)注意到设置面板中的 “Shortcut Conflicts for Active Keymap”,(活动的Keymap">
@@ -252,7 +252,7 @@
 <p>这里的 <code>reset()</code> 方法应该就是获取冲突的快捷键添加到设置面板的表格中的.<br>为什么方法名是<code>reset()</code> 呢?  </p>
 <hr>
 <p>从另一个角度来探索:  </p>
-<h2 id="idea-插件添加设置面板"><a href="#idea-插件添加设置面板" class="headerlink" title="idea 插件添加设置面板"></a>idea 插件添加设置面板</h2><h3 id="1-创建继承-Configurable-接口的类"><a href="#1-创建继承-Configurable-接口的类" class="headerlink" title="1. 创建继承 Configurable 接口的类"></a>1. 创建继承 Configurable 接口的类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">VimEmulationConfigurable</span> <span class="keyword">implements</span> <span class="title">Configurable</span> </span>&#123;</span><br></pre></td></tr></table></figure>
+<h2 id="idea-插件添加设置面板"><a href="#idea-插件添加设置面板" class="headerlink" title="idea 插件添加设置面板"></a>idea 插件添加设置面板</h2><h3 id="1-创建继承-Configurable-接口的类"><a href="#1-创建继承-Configurable-接口的类" class="headerlink" title="1. 创建继承 Configurable 接口的类"></a>1. 创建继承 Configurable 接口的类</h3><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">VimEmulationConfigurable</span> <span class="keyword">implements</span> <span class="title">Configurable</span> </span>&#123;</span><br></pre></td></tr></table></figure>
 <h3 id="2-重写方法"><a href="#2-重写方法" class="headerlink" title="2. 重写方法"></a>2. 重写方法</h3><p>createComponent<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> JComponent <span class="title">createComponent</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> myPanel;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>apply<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">apply</span><span class="params">()</span> <span class="keyword">throws</span> ConfigurationException </span>&#123;</span><br><span class="line">  myConflictsTableModel.apply();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>reset<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reset</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  myConflictsTableModel.reset();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -272,7 +272,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2018/01/08/ideavim-设置面板的简单分析/" data-id="cjewmxa8l0004bssdc1mv8cp2" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2018/01/08/ideavim-设置面板的简单分析/" data-id="cjex0lk250006c3uvul0fly7z" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
